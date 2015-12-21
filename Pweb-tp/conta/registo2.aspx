@@ -16,11 +16,10 @@
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="N_contribuinte"
                     CssClass="text-danger" ErrorMessage="O numero de contribuinte é necessario." />
                 <br />
-                <asp:RegularExpressionValidator ID="N_contribuinteexp" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression="\d{9}"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="N_contribuinteexp" runat="server" ControlToValidate="N_contribuinte" ErrorMessage="RegularExpressionValidator" ValidationExpression="\d{9}"></asp:RegularExpressionValidator>
+                <br />
                 <br />
             </div>
-        </div>
-        <div class="form-group">
             <div style="margin-left: 340px">
                 <asp:DropDownList ID="DropDownList2" runat="server">
                     <asp:ListItem Selected="True" Value="1">Cliente Unitario</asp:ListItem>
@@ -35,7 +34,7 @@
 Poderá atribuir pessoas as respetivas matriculas. - 10 matriculas ativas no maximo. 
                 </div>
                 <div>
-                <asp:Button runat="server" Text="Finalizar Registo" CssClass="btn btn-default" OnClick="button_Click" />
+                    <asp:Button runat="server" Text="Finalizar Registo" CssClass="btn btn-default" OnClick="button_Click" />
                 </div>
             </div>
         </div>

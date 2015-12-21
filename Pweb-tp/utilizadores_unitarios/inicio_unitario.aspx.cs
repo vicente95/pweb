@@ -11,7 +11,7 @@ public partial class utilizadores_unitarios_inicio_unitario : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         utilizadores.BindGrid(GridView1);
-
+        /*nome_label.text=gridview.selectedrow.cell[x].text*/
     }
 
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
