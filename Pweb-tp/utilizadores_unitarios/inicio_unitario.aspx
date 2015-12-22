@@ -23,6 +23,7 @@
     <br />
 
     <br />
+    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     <br />
     <asp:Panel ID="Panel1" runat="server">
         <asp:Panel ID="Panel2" runat="server">
@@ -32,7 +33,7 @@
             
                 <asp:TextBox ID="Textnome" runat="server" Width="438px"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Textnome" CssClass="text-danger" ErrorMessage="O nome é necessario." />
-                &nbsp;<asp:RegularExpressionValidator ID="N_nome" runat="server" ControlToValidate="Textnome" ErrorMessage="RegularExpressionValidator" ValidationExpression="\s{3}"></asp:RegularExpressionValidator>
+                &nbsp;<asp:RegularExpressionValidator ID="N_nome" runat="server" ControlToValidate="Textnome" ErrorMessage="Tem de ter mais de 3 caracteres sem números" ValidationExpression="\b[a-zA-Z]{3}\b"></asp:RegularExpressionValidator>
                 <br />
            
         
@@ -42,7 +43,7 @@
             
                 <asp:TextBox ID="Textemail" runat="server" Width="336px"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Textemail" CssClass="text-danger" ErrorMessage="O email é necessario." />
-                &nbsp;<asp:RegularExpressionValidator ID="N_mail" runat="server" ControlToValidate="Textemail" ErrorMessage="RegularExpressionValidator" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                &nbsp;<asp:RegularExpressionValidator ID="N_mail" runat="server" ControlToValidate="Textemail" ErrorMessage="Email invalido" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                 <br />
             
      
@@ -53,7 +54,7 @@
             
                 <asp:TextBox ID="Textcontribuinte" runat="server" Width="336px"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="Textcontribuinte" CssClass="text-danger" ErrorMessage="O numero de contribuinte é necessario." />
-                &nbsp;<asp:RegularExpressionValidator ID="N_contri" runat="server" ControlToValidate="Textcontribuinte" ErrorMessage="RegularExpressionValidator" ValidationExpression="\d{9}"></asp:RegularExpressionValidator>
+                &nbsp;<asp:RegularExpressionValidator ID="N_contri" runat="server" ControlToValidate="Textcontribuinte" ErrorMessage="O numero de contribuinte têm 9 digitos" ValidationExpression="\d{9}"></asp:RegularExpressionValidator>
                 <br />
             
         
@@ -73,7 +74,7 @@
        
             <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Underline="true" Font-Size="13">
                 <asp:HyperLink ID="HyperLink1" runat="server" Text="Alterar Palabvra-passe? Carregue aqui!"></asp:HyperLink></asp:Label>
-                    <asp:Button ID="Button1" runat="server" Text="Modificar" Width="109px" />
+                    <asp:Button ID="Button1" runat="server" Text="Modificar" Width="109px" OnClick="Button1_Click" />
                 </div>
         <hr />
         </asp:Panel>

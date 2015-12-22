@@ -1,10 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/utilizadores_unitarios/Cliente_unitario.master" AutoEventWireup="true" CodeFile="DadosCarros.aspx.cs" Inherits="utilizadores_unitarios_DadosCarros" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-<div class="form-horizontal">
+    <div class="form-horizontal">
     <hr />
     <div class="form-group">
         <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+        <br />
+    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     </div>
     <hr />
     <div class="form-group">
@@ -12,7 +14,7 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="marca" CssClass="col-md-2 control-label">Marca: </asp:Label>
             <div class="col-md-5">
-                <asp:TextBox runat="server" ID="Marca" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="marca" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="marca"
                     CssClass="text-danger" ErrorMessage="Insira uma marca!" />
             </div>
@@ -37,12 +39,12 @@
             <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Bold="true">Carro está? </asp:Label>
             <div class="col-md-5">
                 <asp:RadioButtonList ID="RadioButtonList1" runat="server">
-                    <asp:ListItem Text="Ativo"></asp:ListItem>
+                    <asp:ListItem Text="Ativo" Selected="True"></asp:ListItem>
                     <asp:ListItem Text="Desativo"></asp:ListItem>
                 </asp:RadioButtonList>
         <div class="form-group">
             <div class="col-md-5">
-            <asp:Button runat="server" Text="Adicionar Carro" CssClass="btn btn-default" />
+            <asp:Button ID="adcarro" runat="server" Text="Adicionar Carro" CssClass="btn btn-default" OnClick="adcarro_Click" />
             </div>
          </div>
             </div>
@@ -50,6 +52,7 @@
 
 
     <hr />    
+</div>
 </div>
 </asp:Content>
 
