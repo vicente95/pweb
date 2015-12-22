@@ -18,8 +18,9 @@ public partial class utilizadores_unitarios_DadosCarros : System.Web.UI.Page
     protected void adcarro_Click(object sender, EventArgs e)
     {
         string nome = HttpContext.Current.User.Identity.Name.ToString();
+        int id=0;
+        id_utilizador.id_utiliza(id);
         string connectionString = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
-
 
         String command = "INSERT INTO [Carro] ([matricula], [marca], [modelo], [estado], [id_utilizador]) VALUES (@matr, @marca, @mod, @est, @id)";
         SqlConnection con = new SqlConnection(connectionString);
@@ -28,7 +29,7 @@ public partial class utilizadores_unitarios_DadosCarros : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@marca", marca.Text);
         cmd.Parameters.AddWithValue("@mod", modelo.Text);
         cmd.Parameters.AddWithValue("@est", RadioButtonList1.SelectedItem.Text);
-        cmd.Parameters.AddWithValue("@id", nome);
+        cmd.Parameters.AddWithValue("@id", id);
 
         con.Open();
         cmd.ExecuteNonQuery();

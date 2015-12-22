@@ -20,21 +20,8 @@ public class carros
         //
         string nome = HttpContext.Current.User.Identity.Name.ToString();
         string constring = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
-        string n_cont="";
-        String command = "SELECT [N_contribuinte] FROM [Utilizador] WHERE [Nome] = @st";
-        SqlConnection conn = new SqlConnection(constring);
-        SqlCommand Cm = new SqlCommand(command, conn);
-        Cm.Parameters.AddWithValue("@st", nome);
-        conn.Open();
-        try
-        {
-            n_cont = (string)Cm.ExecuteScalar();
-        }
-        catch
-        {
-            
-        }
-        conn.Close();
+        int n_cont = 0;
+        id_utilizador.id_utiliza(n_cont);
 
         using (SqlConnection con = new SqlConnection(constring))
         {

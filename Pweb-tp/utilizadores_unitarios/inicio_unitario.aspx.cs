@@ -30,14 +30,15 @@ public partial class utilizadores_unitarios_inicio_unitario : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         string connectionString = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
-      
-        
-        String command = "INSERT INTO [Utilizador] ([nome], [Email], [N_contribuinte]) VALUES (@nome, @email, @cont)";
+
+
+        String command = "UPDATE Utilizador SET [nome]=@nome, [Email]=@email, [N_contribuinte]=@cont, [Tipo_utilizador]=@tipo WHERE [Id_utilizador] = @status";
         SqlConnection con = new SqlConnection(connectionString);
         SqlCommand cmd = new SqlCommand(command, con);
         cmd.Parameters.AddWithValue("@nome", Textnome.Text);
         cmd.Parameters.AddWithValue("@email", Textemail.Text);
         cmd.Parameters.AddWithValue("@cont", Textcontribuinte.Text);
+        cmd.Parameters.AddWithValue("@tipo", DropDownList2.SelectedItem.Text);
 
         con.Open();
         cmd.ExecuteNonQuery();

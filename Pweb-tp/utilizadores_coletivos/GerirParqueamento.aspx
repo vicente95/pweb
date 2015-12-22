@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/utilizadores_unitarios/Cliente_unitario.master" AutoEventWireup="true" CodeFile="GerirParqueamento.aspx.cs" Inherits="utilizadores_unitarios_GerirParqueamento" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-<div class="form-horizontal">
+    <div class="form-horizontal">
     <hr />
     <div class="form-group">
         <asp:GridView ID="GridView1" runat="server"></asp:GridView>
@@ -44,7 +44,7 @@
         </div>
         <div class="form-group">
             <div style="margin-left: 340px">
-            <asp:Button runat="server" Text="Adicionar" CssClass="btn btn-default" />
+            <asp:Button ID="adiciona" runat="server" Text="Adicionar" CssClass="btn btn-default" OnClick="adiciona_Click" />
             </div>
          </div>
 
