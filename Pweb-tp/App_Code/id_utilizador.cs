@@ -12,7 +12,7 @@ public class id_utilizador
 {
     public static void id_utiliza(int id)
     {
-        //
+        //retorna o id do utilizador mediante o nome que esta logado
         // TODO: Add constructor logic here
         string nome = HttpContext.Current.User.Identity.Name.ToString();
         string connectionString = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;

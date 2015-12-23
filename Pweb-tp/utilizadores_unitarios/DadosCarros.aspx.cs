@@ -38,4 +38,21 @@ public partial class utilizadores_unitarios_DadosCarros : System.Web.UI.Page
         Label1.Text = "Feito com sucesso";
         Label1.Visible = true;
     }
+
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void Editar_Click(object sender, EventArgs e)
+    {
+        GridView1.Visible = true;
+        GridView2.Visible = false;
+    }
+
+    protected void Eleminar_Click(object sender, EventArgs e)
+    {
+        GridView1.Visible = false;
+        GridView2.Visible = true;
+    }
 }

@@ -18,14 +18,16 @@ public class Parqueamento
         //
         // TODO: Add constructor logic here
         //
+        int d=0;
         string nome = HttpContext.Current.User.Identity.Name.ToString();
+        id_utilizador.id_utiliza(d);
         string constring = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
         using (SqlConnection con = new SqlConnection(constring))
         {
-            using (SqlCommand cmd = new SqlCommand("SELECT Carro.modelo, Carro.marca, Parque.nome, Requisicao.Data_inicio, Requisicao.Data_fim FROM Carro CROSS JOIN Requisicao CROSS JOIN Parque INNER JOIN Requisicao_carro ON Requisicao_carro.Id_carro = Carro.Id_carro INNER JOIN Parque_carro ON Parque_carro.Id_carro = Carro.Id_carro WHERE (Requisicao_carro.Id_carro = @status)", con))
+            using (SqlCommand cmd = new SqlCommand("SELECT Carro.matricula, Carro.modelo, Parque.nome, Requisicao.Data_inicio, Requisicao.Data_fim FROM Parque_requisicao INNER JOIN Parque ON Parque_requisicao.Id_parque = Parque.Id_parque INNER JOIN Carro INNER JOIN Requisicao_carro ON Carro.Id_carro = Requisicao_carro.Id_carro INNER JOIN Requisicao ON Requisicao_carro.Id_requisicao = Requisicao.Id_requisicao ON Parque_requisicao.Id_requisicao = Requisicao.Id_requisicao WHERE (Carro.id_utilizador = @id)", con))
             {
 
-                cmd.Parameters.AddWithValue("@status", nome);
+                cmd.Parameters.AddWithValue("@id", d);
 
                 cmd.CommandType = CommandType.Text;
                 using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
