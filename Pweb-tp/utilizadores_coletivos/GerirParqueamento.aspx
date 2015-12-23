@@ -31,19 +31,21 @@
             <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Bold="true" Font-Underline="true" Font-Size="15">Data Inicio: </asp:Label>
             <div class="col-md-5">       
                 <asp:TextBox ID="Datainicio" runat="server" TextMode="Date"></asp:TextBox>
+                <asp:CompareValidator runat="server" ID="cmp1" ErrorMessage="A data deve ser a partir de hoje" ControlToValidate="Datainicio" Type="String" Operator="GreaterThanEqual" ForeColor="Red" />
              </div>
         </div>
 
          <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Bold="true" Font-Underline="true" Font-Size="15">Data Fim: </asp:Label>
-            <div class="col-md-5">       
+            <div class="col-md-6">       
                 <asp:TextBox ID="Datafim" runat="server" TextMode="Date"></asp:TextBox>
+                <asp:CompareValidator runat="server" ID="cmp2" ErrorMessage="A data deve ser a partir de hoje - pelo menos um dia" ControlToValidate="Datafim" Type="String" Operator="GreaterThan" ForeColor="Red" />
 
 
              </div>
         </div>
         <div class="form-group">
-            <div style="margin-left: 340px">
+            <div style="margin-left: 250px">
             <asp:Button ID="adiciona" runat="server" Text="Adicionar" CssClass="btn btn-default" OnClick="adiciona_Click" />
             </div>
          </div>

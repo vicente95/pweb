@@ -12,15 +12,16 @@ public class requisicao
 {
     public static void requi()
     {
-        //
+        //Não faz nada é não esta a ser usado
         // TODO: Add constructor logic here
+
         string connectionString = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
         //Selecionar o id da requisicao
-        String command2 = "SELECT [Requisicao] FROM[Utilizador] WHERE[Nome] = @st";
+        String command2 = "SELECT [Id_requisicao] FROM [Requisicao] WHERE [Nome] = @st";
         SqlConnection co = new SqlConnection(connectionString);
         SqlCommand cmd2 = new SqlCommand(command2, co);
-        cmd2.Parameters.AddWithValue("@d1", Datainicio.Text);
-        cmd2.Parameters.AddWithValue("@d2", Datafim.Text);
+       // cmd2.Parameters.AddWithValue("@d1", Datainicio.Text);
+       // cmd2.Parameters.AddWithValue("@d2", Datafim.Text);
 
         co.Open();
         cmd2.ExecuteNonQuery();

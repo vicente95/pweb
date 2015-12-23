@@ -23,7 +23,7 @@ public partial class registo : System.Web.UI.Page
         //nomet.Text = PreviousPage.Mensagem;
         nomet = HttpContext.Current.User.Identity.Name.ToString();
         
-           
+           //ver se o utilizador já tem número de contribuinte
             String command = "SELECT [N_contribuinte] FROM [Utilizador] WHERE [Nome] = @st";
             SqlConnection conn = new SqlConnection(connectionString);
             SqlCommand Cm = new SqlCommand(command, conn);
