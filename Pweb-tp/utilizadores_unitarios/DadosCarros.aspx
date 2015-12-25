@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="form-horizontal">
     <hr />
-        <asp:Button ID="Editar" runat="server" Text="Editar" OnClick="Editar_Click"/><asp:Button ID="Eleminar" runat="server" Text="Eliminar" OnClick="Eleminar_Click" />
+        <asp:CheckBox ID="CheckBox1" runat="server" Text="Eleminar" AutoPostBack="True" />
     <div class="form-group">
         <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="White" />

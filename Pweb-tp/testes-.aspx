@@ -18,9 +18,9 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString_usr %>" SelectCommand="SELECT Carro.modelo, Carro.marca, Parque.nome, Requisicao.Data_inicio, Requisicao.Data_fim FROM Carro CROSS JOIN Requisicao CROSS JOIN Parque INNER JOIN Requisicao_carro ON Requisicao_carro.Id_carro = Carro.Id_carro INNER JOIN Parque_carro ON Parque_carro.Id_carro = Carro.Id_carro WHERE (Requisicao_carro.Id_carro = @status)">
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString_usr %>" SelectCommand="SELECT COUNT([estado]) FROM [Carro] WHERE [estado]=1 AND id_utilizador = @id">
             <SelectParameters>
-                <asp:Parameter Name="status" />
+                <asp:Parameter Name="id" />
             </SelectParameters>
         </asp:SqlDataSource>
     </form>

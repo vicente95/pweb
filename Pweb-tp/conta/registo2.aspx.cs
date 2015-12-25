@@ -104,6 +104,9 @@ public partial class registo : System.Web.UI.Page
 
             Roles.AddUsersToRole(Grumetes, "unitario");
 
+            Registar_primeiro_carro.Registar_primeiro(matricula, marca, modelo, RadioButtonList1);
+            
+
         }
         else
         {
@@ -161,7 +164,7 @@ public partial class registo : System.Web.UI.Page
 
             Response.Redirect("~/inicio.aspx");
 
-
+            Registar_primeiro_carro.Registar_primeiro(matricula, marca, modelo, RadioButtonList1);
         }
     }
 }

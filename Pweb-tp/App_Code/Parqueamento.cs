@@ -19,8 +19,7 @@ public class Parqueamento
         // TODO: Add constructor logic here
         //
         int d=0;
-        string nome = HttpContext.Current.User.Identity.Name.ToString();
-        id_utilizador.id_utiliza(d);
+        d=id_utilizador.id_utiliza(d);
         string constring = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
         using (SqlConnection con = new SqlConnection(constring))
         {

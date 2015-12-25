@@ -6,24 +6,26 @@ using System.Web;
 using System.Web.Configuration;
 
 /// <summary>
-/// Summary description for id_utilizador
+/// Summary description for contar_activos
 /// </summary>
-public class id_utilizador
+public class contar_activos
 {
-    public static int id_utiliza(int id)
+    public static int contar(int num, int id)
     {
-        //retorna o id do utilizador mediante o nome que esta logado
+        //contar os carros ativos do utilizador na base de dados
         // TODO: Add constructor logic here
-        string nome = HttpContext.Current.User.Identity.Name.ToString();
+        //
+
         string connectionString = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
 
-        String StrSel = "SELECT [Id_utilizador] FROM [Utilizador] WHERE [Nome] = @st";
+        String StrSel = "SELECT COUNT([estado]) FROM[Carro] WHERE[estado] = 1 AND id_utilizador = @id";
         SqlConnection conn = new SqlConnection(connectionString);
         SqlCommand Cm = new SqlCommand(StrSel, conn);
-        Cm.Parameters.AddWithValue("@st", nome);
+        Cm.Parameters.AddWithValue("@id", id);
         conn.Open();
-        id = (Int32)Cm.ExecuteScalar();
+        num = (Int32)Cm.ExecuteScalar();
         conn.Close();
-        return id;
+        return num;
     }
+
 }

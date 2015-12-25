@@ -3,9 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="form-horizontal">
     <hr />
-    <asp:Button ID="Editar" runat="server" Text="Editar" OnClick="Editar_Click" /><asp:Button ID="Eleminar" runat="server" Text="Eliminar" OnClick="Eleminar_Click" />
+    <asp:CheckBox ID="CheckBox1" runat="server" Text="Eleminar" AutoPostBack="True" />
     <div class="form-group">
-        <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
+        <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                  <asp:CommandField ShowSelectButton="true" />
@@ -20,7 +20,8 @@
             <SortedDescendingCellStyle BackColor="#EAEAD3" />
             <SortedDescendingHeaderStyle BackColor="#575357" />
         </asp:GridView>
-    &nbsp;<asp:GridView ID="GridView2" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
+        <br />
+        <asp:GridView ID="GridView2" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" Visible="False">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                  <asp:CommandField ShowDeleteButton="true" />
@@ -35,6 +36,8 @@
             <SortedDescendingCellStyle BackColor="#EAEAD3" />
             <SortedDescendingHeaderStyle BackColor="#575357" />
         </asp:GridView>
+        &nbsp;<br />
+&nbsp;&nbsp;&nbsp;
     </div>
     <hr />
     <div class="form-group">
@@ -67,21 +70,58 @@
 
          <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Bold="true" Font-Underline="true" Font-Size="15">Data Fim: </asp:Label>
-            <div class="col-md-5">       
+            <div class="col-md-6">       
                 <asp:TextBox ID="Datafim" runat="server" TextMode="Date"></asp:TextBox>
-
-
                 <asp:CompareValidator runat="server" ID="cmp2" ErrorMessage="A data deve ser a partir de hoje - pelo menos um dia" ControlToValidate="Datafim" Type="String" Operator="GreaterThan" ForeColor="Red" />
-
-
              </div>
         </div>
+
         <div class="form-group">
             <div style="margin-left: 250px">
-            <asp:Button runat="server" Text="Adicionar" CssClass="btn btn-default" OnClick="Unnamed5_Click" />
+            <asp:Button runat="server" Text="Adicionar" CssClass="btn btn-default" ID="Criar" OnClick="Criar_Click" />
             </div>
          </div>
 
+        <asp:Panel ID="Panel1" runat="server">
+            <hr />
+        <div class="form-group">
+            <asp:Label runat="server" CssClass="col-md-2 control-label" Text="Carro: " Font-Bold="true" Font-Underline="true" Font-Size="17"></asp:Label>
+            
+                <asp:DropDownList ID="Selecionecarro0" runat="server">
+                    <asp:ListItem Selected="True" Text="Selecione" Value="1"></asp:ListItem>
+            </asp:DropDownList>
+            &nbsp;<br />&nbsp;<br /><br /><asp:Label runat="server" CssClass="col-md-2 control-label" Font-Bold="true" Font-Size="17" Font-Underline="true" Text="Parque:"></asp:Label>
+            &nbsp;<asp:DropDownList ID="Selecionaparque0" runat="server">
+                <asp:ListItem Selected="True" Text="Parque 1 - Avenida Fernão Magalhães" Value="1"></asp:ListItem>
+                <asp:ListItem Text="Parque 2 - Quinta das Flores" Value="2"></asp:ListItem>
+                <asp:ListItem Text="Parque 3 - Celas(Hospital)" Value="3"></asp:ListItem>
+            </asp:DropDownList>
+            &nbsp;<br />&nbsp;<br /><br />&nbsp;<div class="form-group">
+                <div class="col-md-5">
+                    <asp:Label ID="Label1" runat="server" CssClass="col-md-2 control-label" Font-Bold="true" Font-Size="17" Font-Underline="true" Text="Data inicio:"></asp:Label>
+                    <asp:TextBox ID="Datainicio0" runat="server" TextMode="Date"></asp:TextBox>
+                    <asp:CompareValidator ID="cmp3" runat="server" ControlToValidate="Datainicio" ErrorMessage="A data deve ser a partir de hoje" ForeColor="Red" Operator="GreaterThanEqual" Type="String" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                    <br />
+                    <asp:Label ID="Label2" runat="server" CssClass="col-md-2 control-label" Font-Bold="true" Font-Size="17" Font-Underline="true" Text="Data fim:"></asp:Label>
+                    &nbsp;&nbsp;&nbsp;
+                    <asp:TextBox ID="Datafim0" runat="server" TextMode="Date"></asp:TextBox>
+                    <asp:CompareValidator ID="cmp4" runat="server" ControlToValidate="Datafim" ErrorMessage="A data deve ser a partir de hoje - pelo menos um dia" ForeColor="Red" Operator="GreaterThan" Type="String" />
+                </div>
+            </div>
+                <br />
+                
+           
+       
+            <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Underline="true" Font-Size="13">
+                <asp:HyperLink ID="HyperLink1" runat="server" Text="Alterar Palabvra-passe? Carregue aqui!"></asp:HyperLink></asp:Label>
+                    <asp:Button ID="Modificar" runat="server" Text="Modificar" Width="109px" OnClick="Modificar_Click" />
+                </div>
+        <hr />
+        </asp:Panel>
 
 </div>
     <hr />
