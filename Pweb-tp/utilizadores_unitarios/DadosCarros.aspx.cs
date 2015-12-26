@@ -40,7 +40,7 @@ public partial class utilizadores_unitarios_DadosCarros : System.Web.UI.Page
         SqlCommand cmd = new SqlCommand(command, con);
         cmd.Parameters.AddWithValue("@matr", matricula.Text);
         cmd.Parameters.AddWithValue("@marca", marca.Text);
-        cmd.Parameters.AddWithValue("@mod", modelo.Text)
+        cmd.Parameters.AddWithValue("@mod", modelo.Text);
         
         if (RadioButtonList1.SelectedItem.Text == "Ativo")
         {

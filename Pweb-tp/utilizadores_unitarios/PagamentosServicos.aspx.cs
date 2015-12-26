@@ -9,6 +9,6 @@ public partial class utilizadores_unitarios_PagamentosServicos : System.Web.UI.P
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        ver_pagamento.pagamento(GridView1);
     }
 }

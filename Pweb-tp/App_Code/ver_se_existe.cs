@@ -18,7 +18,7 @@ public class ver_se_existe
         // TODO: Add constructor logic here
         //
         {
-           
+
             string constring = ConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
             SqlConnection con = new SqlConnection(constring);
             SqlCommand cmd = new SqlCommand("Select * from EmailSignUp where EmailId= @EmailId", con);
@@ -29,10 +29,11 @@ public class ver_se_existe
             {
                 if (dr.HasRows == true)
                 {
-                    MessageBox.Show("EmailId = " + dr[5].ToString() + " Already exist");
-                    txtEmail.Clear();
+                    //MessageBox.Show("EmailId = " + dr[5].ToString() + " Already exist");
+                    //txtEmail.Clear();
                     break;
                 }
             }
         }
+    }
 }

@@ -85,6 +85,9 @@
         <asp:Panel ID="Panel1" runat="server">
             <hr />
         <div class="form-group">
+            Modificar Requisição:
+            <br />
+            <br />
             <asp:Label runat="server" CssClass="col-md-2 control-label" Text="Carro: " Font-Bold="true" Font-Underline="true" Font-Size="17"></asp:Label>
             
                 <asp:DropDownList ID="Selecionecarro0" runat="server">
@@ -92,22 +95,21 @@
             </asp:DropDownList>
             &nbsp;<br />&nbsp;<br /><br /><asp:Label runat="server" CssClass="col-md-2 control-label" Font-Bold="true" Font-Size="17" Font-Underline="true" Text="Parque:"></asp:Label>
             &nbsp;<asp:DropDownList ID="Selecionaparque0" runat="server">
-                <asp:ListItem Selected="True" Text="Parque 1 - Avenida Fernão Magalhães" Value="1"></asp:ListItem>
-                <asp:ListItem Text="Parque 2 - Quinta das Flores" Value="2"></asp:ListItem>
-                <asp:ListItem Text="Parque 3 - Celas(Hospital)" Value="3"></asp:ListItem>
+                <asp:ListItem Selected="True" Text="Avenida Fernão Magalhães" Value="1"></asp:ListItem>
+                <asp:ListItem Text="Quinta das Flores" Value="2"></asp:ListItem>
+                <asp:ListItem Text="Celas(Hospital)" Value="3"></asp:ListItem>
             </asp:DropDownList>
             &nbsp;<br />&nbsp;<br /><br />&nbsp;<div class="form-group">
                 <div class="col-md-5">
-                    <asp:Label ID="Label1" runat="server" CssClass="col-md-2 control-label" Font-Bold="true" Font-Size="17" Font-Underline="true" Text="Data inicio:"></asp:Label>
+                    <asp:Label ID="Label1" runat="server" CssClass="col-md-5 control-label" Font-Bold="true" Font-Size="17" Font-Underline="true" Text="Data inicio:"></asp:Label>
                     <asp:TextBox ID="Datainicio0" runat="server" TextMode="Date"></asp:TextBox>
                     <asp:CompareValidator ID="cmp3" runat="server" ControlToValidate="Datainicio" ErrorMessage="A data deve ser a partir de hoje" ForeColor="Red" Operator="GreaterThanEqual" Type="String" />
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-6">
-                    <br />
-                    <asp:Label ID="Label2" runat="server" CssClass="col-md-2 control-label" Font-Bold="true" Font-Size="17" Font-Underline="true" Text="Data fim:"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label2" runat="server" CssClass="col-md-5 control-label" Font-Bold="true" Font-Size="17" Font-Underline="true" Text="Data fim:"></asp:Label>
+                    
                     <asp:TextBox ID="Datafim0" runat="server" TextMode="Date"></asp:TextBox>
                     <asp:CompareValidator ID="cmp4" runat="server" ControlToValidate="Datafim" ErrorMessage="A data deve ser a partir de hoje - pelo menos um dia" ForeColor="Red" Operator="GreaterThan" Type="String" />
                 </div>
@@ -116,8 +118,6 @@
                 
            
        
-            <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Underline="true" Font-Size="13">
-                <asp:HyperLink ID="HyperLink1" runat="server" Text="Alterar Palabvra-passe? Carregue aqui!"></asp:HyperLink></asp:Label>
                     <asp:Button ID="Modificar" runat="server" Text="Modificar" Width="109px" OnClick="Modificar_Click" />
                 </div>
         <hr />
