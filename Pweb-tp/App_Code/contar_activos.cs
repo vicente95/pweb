@@ -23,7 +23,13 @@ public class contar_activos
         SqlCommand Cm = new SqlCommand(StrSel, conn);
         Cm.Parameters.AddWithValue("@id", id);
         conn.Open();
-        num = (Int32)Cm.ExecuteScalar();
+        try {
+            num = (Int32)Cm.ExecuteScalar();
+        }
+        catch
+        {
+            num = 0;
+        }
         conn.Close();
         return num;
     }
@@ -40,7 +46,14 @@ public class contar_activos
         SqlCommand Cm = new SqlCommand(StrSel, conn);
         Cm.Parameters.AddWithValue("@id", id);
         conn.Open();
-        num = (Int32)Cm.ExecuteScalar();
+        try
+        {
+            num = (Int32)Cm.ExecuteScalar();
+        }
+        catch
+        {
+            num = 0;
+        }
         conn.Close();
         return num;
     }

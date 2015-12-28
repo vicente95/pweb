@@ -87,9 +87,9 @@ public partial class utilizadores_unitarios_DadosCarros : System.Web.UI.Page
     {
         Panel2.Visible = true;
         Panel1.Visible = false;
-        TextBox1.Text = GridView1.SelectedRow.Cells[2].Text;
-        TextBox2.Text = GridView1.SelectedRow.Cells[3].Text;
-        TextBox3.Text = GridView1.SelectedRow.Cells[4].Text;
+        TextBox1.Text = GridView1.SelectedRow.Cells[1].Text;
+        TextBox2.Text = GridView1.SelectedRow.Cells[2].Text;
+        TextBox3.Text = GridView1.SelectedRow.Cells[3].Text;
     }
 
 
