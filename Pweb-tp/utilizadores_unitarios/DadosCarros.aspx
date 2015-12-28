@@ -36,9 +36,10 @@
             <SortedDescendingHeaderStyle BackColor="#575357" />
         </asp:GridView>
         <br />
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="Label1" runat="server" Text="Label">Pode editar e eleminar a sua informação.</asp:Label>
     </div>
     <hr />
+    <asp:Panel ID="Panel1" runat="server">
     <div class="form-group">
         <h4>Novo Carro: </h4>
         <div class="form-group">
@@ -79,10 +80,57 @@
          </div>
             </div>
         </div>
-
-
     <hr />    
+
 </div>
+</asp:Panel>
+
+    <asp:Panel ID="Panel2" runat="server">
+    <div class="form-group">
+        <h4>Modificar Carro: </h4>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="marca" CssClass="col-md-2 control-label">Marca: </asp:Label>
+            <div class="col-md-5">
+                <asp:TextBox runat="server" ID="TextBox1" CssClass="form-control" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="TextBox1"
+                    CssClass="text-danger" ErrorMessage="Insira uma marca!" />
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="modelo" CssClass="col-md-2 control-label">Modelo: </asp:Label>
+            <div class="col-md-5">
+                <asp:TextBox runat="server" ID="TextBox2" CssClass="form-control" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="TextBox2"
+                    CssClass="text-danger" ErrorMessage="Insira um modelo!" />
+            </div>
+        </div>
+         <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="matricula" CssClass="col-md-2 control-label">Matrícula: </asp:Label>
+            <div class="col-md-5">
+                <asp:TextBox runat="server" ID="TextBox3" CssClass="form-control" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="TextBox3"
+                    CssClass="text-danger" ErrorMessage="Insira uma matrícula" />
+            </div>
+        </div>
+         <div class="form-group">
+            <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Bold="true">Carro está? </asp:Label>
+            <div class="col-md-5">
+                <asp:RadioButtonList ID="RadioButtonList2" runat="server">
+                    <asp:ListItem Text="Ativo"></asp:ListItem>
+                    <asp:ListItem Text="Desativo"></asp:ListItem>
+                </asp:RadioButtonList>
+        <div class="form-group">
+            <div class="col-md-5">
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RadioButtonList2" CssClass="text-danger" ErrorMessage="Selecione" />
+            <asp:Button ID="Button2" runat="server" Text="Modificar Carro" CssClass="btn btn-default" OnClick="Button2_Click" />
+            </div>
+         </div>
+            </div>
+        </div>
+    <hr />    
+
+</div>
+</asp:Panel>
 </div>
 </asp:Content>
 

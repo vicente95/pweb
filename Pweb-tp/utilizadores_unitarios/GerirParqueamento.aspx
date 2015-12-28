@@ -38,8 +38,10 @@
         </asp:GridView>
         &nbsp;<br />
 &nbsp;&nbsp;&nbsp;
-    </div>
+        <asp:Label ID="Label3" runat="server" Text="Label">Poderá editar e eliminar os seus paruqeamentos alterne no botão eleminar</asp:Label>
+    &nbsp;</div>
     <hr />
+   <asp:Panel ID="Panel2" runat="server">
     <div class="form-group">
         <h4>Nova Requisição: </h4>
         <div class="form-group">
@@ -48,7 +50,7 @@
                 <asp:DropDownList ID="Selecionecarro" runat="server">
                     <asp:ListItem Text="Selecione" Selected="True" Value ="1"></asp:ListItem>
                 </asp:DropDownList>
-            </div>
+            &nbsp;</div>
         </div>
         <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Bold="true" Font-Underline="true" Font-Size="15">Selecione o parque: </asp:Label>
@@ -81,7 +83,8 @@
             <asp:Button runat="server" Text="Adicionar" CssClass="btn btn-default" ID="Criar" OnClick="Criar_Click" />
             </div>
          </div>
-
+       </div>
+     </asp:Panel>
         <asp:Panel ID="Panel1" runat="server">
             <hr />
         <div class="form-group">
@@ -103,7 +106,7 @@
                 <div class="col-md-5">
                     <asp:Label ID="Label1" runat="server" CssClass="col-md-5 control-label" Font-Bold="true" Font-Size="17" Font-Underline="true" Text="Data inicio:"></asp:Label>
                     <asp:TextBox ID="Datainicio0" runat="server" TextMode="Date"></asp:TextBox>
-                    <asp:CompareValidator ID="cmp3" runat="server" ControlToValidate="Datainicio" ErrorMessage="A data deve ser a partir de hoje" ForeColor="Red" Operator="GreaterThanEqual" Type="String" />
+                    <asp:CompareValidator ID="cmp3" runat="server" ControlToValidate="Datainicio0" ErrorMessage="A data deve ser a partir de hoje" ForeColor="Red" Operator="GreaterThanEqual" Type="String" />
                 </div>
             </div>
             <div class="form-group">
@@ -111,13 +114,10 @@
                     <asp:Label ID="Label2" runat="server" CssClass="col-md-5 control-label" Font-Bold="true" Font-Size="17" Font-Underline="true" Text="Data fim:"></asp:Label>
                     
                     <asp:TextBox ID="Datafim0" runat="server" TextMode="Date"></asp:TextBox>
-                    <asp:CompareValidator ID="cmp4" runat="server" ControlToValidate="Datafim" ErrorMessage="A data deve ser a partir de hoje - pelo menos um dia" ForeColor="Red" Operator="GreaterThan" Type="String" />
+                    <asp:CompareValidator ID="cmp4" runat="server" ControlToValidate="Datafim0" ErrorMessage="A data deve ser a partir de hoje - pelo menos um dia" ForeColor="Red" Operator="GreaterThan" Type="String" />
                 </div>
             </div>
                 <br />
-                
-           
-       
                     <asp:Button ID="Modificar" runat="server" Text="Modificar" Width="109px" OnClick="Modificar_Click" />
                 </div>
         <hr />
@@ -125,6 +125,6 @@
 
 </div>
     <hr />
-</div>
+
 </asp:Content>
 

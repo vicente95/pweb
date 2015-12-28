@@ -12,16 +12,15 @@ using System.Web.UI.WebControls;
 /// </summary>
 public class ver_se_existe
 {
-    public static void ver_matricula(TextBox txtEmail)
+    public static int ver_email(TextBox txtEmail)
     {
         //ver se uma determinada matricula já existe na base de dados
         // TODO: Add constructor logic here
         //
-        {
-
+        int n=0;
             string constring = ConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
             SqlConnection con = new SqlConnection(constring);
-            SqlCommand cmd = new SqlCommand("Select * from EmailSignUp where EmailId= @EmailId", con);
+            SqlCommand cmd = new SqlCommand("Select Email from Utilizador where Email= @EmailId", con);
             cmd.Parameters.AddWithValue("@EmailId", txtEmail.Text);
             con.Open();
             SqlDataReader dr = cmd.ExecuteReader();
@@ -31,9 +30,14 @@ public class ver_se_existe
                 {
                     //MessageBox.Show("EmailId = " + dr[5].ToString() + " Already exist");
                     //txtEmail.Clear();
+                    n = 1;
                     break;
                 }
             }
+        con.Close();
+        return n;
         }
-    }
+
+   
+
 }

@@ -21,9 +21,9 @@ public partial class utilizadores_unitarios_inicio_unitario : System.Web.UI.Page
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
         Panel1.Visible = true;
-        Textnome.Text = GridView1.SelectedRow.Cells[2].Text;
-        Textemail.Text = GridView1.SelectedRow.Cells[3].Text;
-        Textcontribuinte.Text = GridView1.SelectedRow.Cells[4].Text;
+        Textnome.Text = GridView1.SelectedRow.Cells[1].Text;
+        Textemail.Text = GridView1.SelectedRow.Cells[2].Text;
+        Textcontribuinte.Text = GridView1.SelectedRow.Cells[3].Text;
 
     }
 

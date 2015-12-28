@@ -88,7 +88,7 @@
 
 
     <div style="margin-left: 80px">
-        <asp:HyperLink ID="DadosPessoais"  runat="server" Font-Bold="True" NavigateUrl="~/utilizadores_unitarios/DadosPessoias.aspx">Dados Pessoais</asp:HyperLink>
+        <asp:HyperLink ID="DadosPessoais"  runat="server" Font-Bold="True" NavigateUrl="~/utilizadores_unitarios/inicio_unitario.aspx">Dados Pessoais</asp:HyperLink>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:HyperLink ID="DadosCarros" runat="server" Font-Bold="True" NavigateUrl="~/utilizadores_unitarios/DadosCarros.aspx">Dados dos Carro</asp:HyperLink>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

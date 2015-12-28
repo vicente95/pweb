@@ -15,10 +15,7 @@ public class ver_pagamento
 {
     public static void pagamento(GridView ddl)
     {
-        //
-        // TODO: Add constructor logic here
-        //
-        //
+        //ver os pagamentos de cada utilizador
         // TODO: Add constructor logic here
         //
         int d = 0;

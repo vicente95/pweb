@@ -22,19 +22,25 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
         {
             GridView2.Visible = true;
             GridView1.Visible = false;
-
+            Panel2.Visible = false;
+            Panel1.Visible = true;
         }
         else
         {
             GridView1.Visible = true;
             GridView2.Visible = false;
+            Panel1.Visible = false;
+            Panel2.Visible = true;
         }
 
 
-        Panel1.Visible = false;
+        
         id=id_utilizador.id_utiliza(id);
+        //mostrar os carros ativos do utilizador na dropdownlist
         Carros_ativos.carros_at(id, Selecionecarro);
+        //preencher griedview1 editar
         Parqueamento.Parque(GridView1);
+        //preencher griedview2 eleminar
         Parqueamento.Parque(GridView2);
 
 
@@ -96,7 +102,7 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
         c.Close();
 
 
-        //entrada Requesição_carro 
+        //entrada Requesição_carro uma requisição para um carro 
         String command1 = "INSERT INTO [Requisicao_carro] ([Id_requisicao], [Id_carro]) VALUES (@x1, @x2)";
         SqlConnection con = new SqlConnection(connectionString);
         SqlCommand cmd1 = new SqlCommand(command1, con);
@@ -129,6 +135,7 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
         cmd9.ExecuteNonQuery();
         ccc.Close();
         Response.Redirect("~/utilizadores_unitarios/GerirParqueamento.aspx");
+        Label3.Text = "Adicionada requesição com sucesso!";
 
     }
 
@@ -243,5 +250,6 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
         cmd4.ExecuteNonQuery();
         cc.Close();
         Response.Redirect("~/utilizadores_unitarios/GerirParqueamento.aspx");
+        Label3.Text = "Alterado com sucesso";
     }
 }

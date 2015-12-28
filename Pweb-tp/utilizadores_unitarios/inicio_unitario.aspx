@@ -3,11 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" Width="770px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+    <br />
+    Aqui poderá ver os dados da sua conta.<asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" Width="770px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
         <asp:CommandField ShowSelectButton="true" />
-        <asp:CommandField ShowDeleteButton="true" />
         </Columns>
         <FooterStyle BackColor="#CCCC99" />
         <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
@@ -23,10 +23,9 @@
     <br />
 
     <br />
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="Label1" runat="server" Text="Label">Só pode alterar os seus dados</asp:Label>
     <br />
     <asp:Panel ID="Panel1" runat="server">
-        <asp:Panel ID="Panel2" runat="server">
             <hr />
         <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-2 control-label" Text="Nome: " Font-Bold="true" Font-Underline="true" Font-Size="17"></asp:Label>
@@ -78,7 +77,6 @@
                 </div>
         <hr />
         </asp:Panel>
-    </asp:Panel>
 
 </asp:Content>
 

@@ -15,7 +15,7 @@ public class carros_tudo
 {
     public static void carro(GridView ddl)
     {
-        //
+        //griedview da página dadoscarros
         // TODO: Add constructor logic here
         //
         string constring = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
