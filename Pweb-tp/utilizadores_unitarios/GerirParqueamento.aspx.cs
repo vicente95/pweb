@@ -7,6 +7,16 @@ using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+
+
+
 public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Page
 {
     string connectionString = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
@@ -17,20 +27,20 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
     int id_carro;
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        Panel2.Visible = true;
+        Panel1.Visible = false;
+
         if (CheckBox1.Checked == true)
         {
             GridView2.Visible = true;
             GridView1.Visible = false;
-            Panel2.Visible = false;
-            Panel1.Visible = true;
+            
         }
         else
         {
             GridView1.Visible = true;
             GridView2.Visible = false;
-            Panel1.Visible = false;
-            Panel2.Visible = true;
+            
         }
 
 
@@ -41,7 +51,7 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
         //preencher griedview1 editar
         Parqueamento.Parque(GridView1);
         //preencher griedview2 eleminar
-        Parqueamento.Parque(GridView2);
+        
 
 
         Datainicio.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -142,6 +152,7 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
 
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
+        Panel2.Visible = false;
         Panel1.Visible = true;
         Carros_ativos.carros_at(id, Selecionecarro0);
         Selecionecarro0.SelectedValue = GridView1.SelectedRow.Cells[1].Text;
@@ -155,34 +166,49 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
 
     protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
     {
-        int id_p;
-        string parque = GridView1.SelectedRow.Cells[3].Text;
-        string matricula = GridView1.SelectedRow.Cells[1].Text;
-        string data = GridView1.SelectedRow.Cells[4].Text;
-        int executar;
+        DialogResult result = MessageBox.Show("Tem a certeza que pretende apagar esta requesição?", "Apagar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
-        if (parque== "Avenida Fernão Magalhães")
+        if (result == DialogResult.OK)
         {
-            id_p = 1;
+            int id_p;
+            string parque = GridView2.SelectedRow.Cells[3].Text;
+            string matricula = GridView2.SelectedRow.Cells[1].Text;
+            string data = GridView2.SelectedRow.Cells[4].Text;
+            int executar;
 
-        } else if (parque== "Quinta das Flores")
-        {
-            id_p = 2;
+            if (parque == "Avenida Fernao Magalhaes")
+            {
+                id_p = 1;
+
+            }
+            else if (parque == "Quinta das Flores")
+            {
+                id_p = 2;
+            }
+            else
+            {
+                id_p = 3;
+            }
+
+            executar = apagar_parqueamento.ap_parqueamento(id_p, matricula, data);
+            if (executar == 0)
+            {
+                Label3.ForeColor = System.Drawing.Color.Red;
+                Label3.Text = "Não foi possivel eleminar a requesição por não estar paga ou ainda não ter sido reconhecida como paga!";
+                Parqueamento.Parque(GridView2);
+            }
+            else
+            {
+                Label3.ForeColor = System.Drawing.Color.Green;
+                Label3.Text = "Apagado com sucesso!";
+                Parqueamento.Parque(GridView2);
+            }
         }
         else
         {
-            id_p = 3;
-        }
 
-        executar=apagar_parqueamento.ap_parqueamento(id_p, matricula, data);
-        if (executar == 0)
-        {
-            Label3.Text = "Não foi possivel eleminar a requesição por não estar paga ou ainda não ter sido reconhecida como paga!";
-
-        }
-        else
-        {
-            Label3.Text = "Apagado com sucesso!";
+            Parqueamento.Parque(GridView2);
+            //Response.Redirect("~/utilizadores_unitarios/GerirParqueamento.aspx");
         }
     }
 
@@ -277,11 +303,16 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
         cc.Open();
         cmd4.ExecuteNonQuery();
         cc.Close();
-        Response.Redirect("~/utilizadores_unitarios/GerirParqueamento.aspx");
+        
         Label3.Text = "Alterado com sucesso";
+        
+        Parqueamento.Parque(GridView1);
     }
     protected void voltar_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/utilizadores_unitarios/GerirParqueamento.aspx");
+        Panel2.Visible = true;
+        Panel1.Visible = false;
+       
+        Parqueamento.Parque(GridView1);
     }
 }

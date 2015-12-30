@@ -10,7 +10,6 @@
         <AlternatingRowStyle BackColor="White" />
         <Columns>
         <asp:CommandField ShowSelectButton="true" SelectText="Editar "/>
-        <asp:CommandField ShowEditButton="true" />
         </Columns>
         <FooterStyle BackColor="#CCCC99" />
         <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
@@ -35,7 +34,7 @@
             
                 <asp:TextBox ID="Textnome" runat="server" Width="438px"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Textnome" CssClass="text-danger" ErrorMessage="O nome é necessario." />
-                &nbsp;<asp:RegularExpressionValidator ID="N_nome" runat="server" ControlToValidate="Textnome" ErrorMessage="Tem de ter mais de 3 caracteres sem números" ValidationExpression="\b[a-zA-Z]{3}\b"></asp:RegularExpressionValidator>
+                &nbsp;<asp:RegularExpressionValidator ID="N_nome" runat="server" ControlToValidate="Textnome" ErrorMessage="Tem de ter mais de 3 caracteres sem números" ValidationExpression="^[\s\S]{3,}$"></asp:RegularExpressionValidator>
                 <br />
            
         
@@ -76,6 +75,7 @@
        
             <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Underline="true" Font-Size="13">
                 <asp:HyperLink ID="HyperLink1" runat="server" Text="Alterar Palabvra-passe? Carregue aqui!"></asp:HyperLink></asp:Label>
+                    <asp:Button ID="voltar" runat="server" OnClick="voltar_Click" Text="voltar" Width="109px" />
                     <asp:Button ID="Button1" runat="server" Text="Modificar" Width="109px" OnClick="Button1_Click" />
                 </div>
         <hr />

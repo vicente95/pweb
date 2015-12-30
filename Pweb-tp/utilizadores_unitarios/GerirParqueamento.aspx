@@ -6,6 +6,7 @@
     Aqui poderá editar, eleminar, adicionar e ver informações relativas aos parqueamentos dos carros nos diversos parques. Clique em selecione para editar, com o eliminar click tambem em selecionar.
     <asp:CheckBox ID="CheckBox1" runat="server" Text="Eleminar" AutoPostBack="True" />
         <br />
+        <br />
     <div class="form-group">
         <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="White" />
@@ -100,7 +101,7 @@
             </asp:DropDownList>
             &nbsp;<br />&nbsp;<br /><br /><asp:Label runat="server" CssClass="col-md-2 control-label" Font-Bold="true" Font-Size="17" Font-Underline="true" Text="Parque:"></asp:Label>
             &nbsp;<asp:DropDownList ID="Selecionaparque0" runat="server">
-                <asp:ListItem Selected="True" Text="Avenida Fernão Magalhães" Value="1"></asp:ListItem>
+                <asp:ListItem Selected="True" Text="Avenida Fernao Magalhaes" Value="1"></asp:ListItem>
                 <asp:ListItem Text="Quinta das Flores" Value="2"></asp:ListItem>
                 <asp:ListItem Text="Celas(Hospital)" Value="3"></asp:ListItem>
             </asp:DropDownList>

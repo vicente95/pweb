@@ -50,4 +50,10 @@ public partial class utilizadores_unitarios_inicio_unitario : System.Web.UI.Page
         Label1.Visible = true;
 
     }
+
+    protected void voltar_Click(object sender, EventArgs e)
+    {
+        Panel1.Visible = false;
+        utilizadores.BindGrid(GridView1);
+    }
 }

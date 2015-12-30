@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI.WebControls;
 
 /// <summary>
@@ -43,6 +44,7 @@ public class apagar_parqueamento
         {
             apagar_requesicao_carro(id_req);
             apagar_Parque_requesicao(id_req);
+            apagar_Utilizador_requisicao(id_req);
             apagar_requesicao(id_req);
             return 1; 
         }
@@ -55,7 +57,7 @@ public class apagar_parqueamento
         //
         int id;
         string constring = ConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
-        String command3 = "SELECT Id_caro FROM Carro WHERE matricula=@x";
+        String command3 = "SELECT Id_carro FROM Carro WHERE matricula=@x";
         SqlConnection conf = new SqlConnection(constring);
         SqlCommand cmdf = new SqlCommand(command3, conf);
         cmdf.Parameters.AddWithValue("@x", mat);
@@ -123,8 +125,9 @@ public class apagar_parqueamento
         int n = 0;
         string constring = ConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
         SqlConnection con = new SqlConnection(constring);
-        SqlCommand cmd = new SqlCommand("SELECT Requisicao.Estado_pagamento WHERE Id_requisicao=@x1", con);
+        SqlCommand cmd = new SqlCommand("SELECT Requisicao.Estado_pagamento FROM Requisicao WHERE Id_requisicao=@x1", con);
         cmd.Parameters.AddWithValue("@x1", idreq);
+        //cmd.Parameters.AddWithValue("@x2", "Por pagar");
         con.Open();
         try
         {
@@ -134,9 +137,9 @@ public class apagar_parqueamento
             {
                 if (dr.HasRows == true)
                 {
-                    //MessageBox.Show("EmailId = " + dr[5].ToString() + " Already exist");
-                    //txtEmail.Clear();
+
                     n = 1;
+                    
                     break;
                 }
             }
@@ -148,5 +151,21 @@ public class apagar_parqueamento
 
         con.Close();
         return n;
+    }
+    public static void apagar_Utilizador_requisicao(int idreq)
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+        //fazer delete da entrada em Utilizador_hierarquia
+        string connectionString = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
+        String command3 = "DELETE FROM Utilizador_requisicao WHERE Id_requisicao=@x";
+        SqlConnection conf = new SqlConnection(connectionString);
+        SqlCommand cmdf = new SqlCommand(command3, conf);
+        cmdf.Parameters.AddWithValue("@x", idreq);
+        conf.Open();
+        cmdf.ExecuteNonQuery();
+        conf.Close();
+
     }
 }

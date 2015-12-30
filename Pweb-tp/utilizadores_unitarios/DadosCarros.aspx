@@ -130,8 +130,7 @@
          </div>
             </div>
         </div>
-    <hr />    
-
+    
 </div>
 </asp:Panel>
 </div>

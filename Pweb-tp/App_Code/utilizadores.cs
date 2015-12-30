@@ -15,6 +15,7 @@ public class utilizadores
 {
     public static void BindGrid(GridView ddl)
     {
+        ddl.SelectedIndex = -1;
         string nome = HttpContext.Current.User.Identity.Name.ToString();
         string constring = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
         using (SqlConnection con = new SqlConnection(constring))

@@ -18,6 +18,7 @@ public class carros_tudo
         //griedview da página dadoscarros
         // TODO: Add constructor logic here
         //
+        ddl.SelectedIndex = -1;
         string constring = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
         int n_cont = 0;
         n_cont = id_utilizador.id_utiliza(n_cont);
