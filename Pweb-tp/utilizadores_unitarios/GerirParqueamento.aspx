@@ -3,12 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="form-horizontal">
     <hr />
+    Aqui poderá editar, eleminar, adicionar e ver informações relativas aos parqueamentos dos carros nos diversos parques. Clique em selecione para editar, com o eliminar click tambem em selecionar.
     <asp:CheckBox ID="CheckBox1" runat="server" Text="Eleminar" AutoPostBack="True" />
+        <br />
     <div class="form-group">
         <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                 <asp:CommandField ShowSelectButton="true" />
+                 <asp:CommandField ShowSelectButton="true" SelectText="Editar " />
             </Columns>
             <FooterStyle BackColor="#CCCC99" />
             <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
@@ -24,7 +26,7 @@
         <asp:GridView ID="GridView2" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" Visible="False">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                 <asp:CommandField ShowDeleteButton="true" />
+                 <asp:CommandField ShowSelectButton="true" SelectText="Eleminar "/>
             </Columns>
             <FooterStyle BackColor="#CCCC99" />
             <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
@@ -38,7 +40,7 @@
         </asp:GridView>
         &nbsp;<br />
 &nbsp;&nbsp;&nbsp;
-        <asp:Label ID="Label3" runat="server" Text="Label">Poderá editar e eliminar os seus paruqeamentos alterne no botão eleminar</asp:Label>
+        <asp:Label ID="Label3" runat="server" Text="Label">Poderá editar, eliminar e adicionar os seus parqueamentos alterne no botão eleminar.</asp:Label>
     &nbsp;</div>
     <hr />
    <asp:Panel ID="Panel2" runat="server">
@@ -118,7 +120,8 @@
                 </div>
             </div>
                 <br />
-                    <asp:Button ID="Modificar" runat="server" Text="Modificar" Width="109px" OnClick="Modificar_Click" />
+                    <asp:Button ID="voltar" runat="server" Text="voltar" Width="109px" OnClick="voltar_Click"/>
+                <asp:Button ID="Modificar" runat="server" OnClick="Modificar_Click" Text="Modificar" Width="109px" />
                 </div>
         <hr />
         </asp:Panel>

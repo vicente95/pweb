@@ -12,9 +12,9 @@
 
     
     </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString_usr %>" SelectCommand="SELECT Carro.marca, Carro.matricula, Carro.modelo, Requisicao.Data_inicio, Requisicao.Data_fim, Parque.nome, Requisicao.Entidade, Requisicao.Referencia, Requisicao.Valor, Requisicao.Estado_pagamento FROM Parque_requisicao INNER JOIN Parque ON Parque_requisicao.Id_parque = Parque.Id_parque INNER JOIN Requisicao ON Parque_requisicao.Id_requisicao = Requisicao.Id_requisicao INNER JOIN Requisicao_carro ON Requisicao.Id_requisicao = Requisicao_carro.Id_requisicao INNER JOIN Carro ON Requisicao_carro.Id_carro = Carro.Id_carro INNER JOIN Utilizador_requisicao ON Requisicao.Id_requisicao = Utilizador_requisicao.Id_requisicao WHERE (Utilizador_requisicao.Id_utilizador = @id)">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString_usr %>" SelectCommand="SELECT Requisicao.Id_requisicao FROM Requisicao INNER JOIN Requisicao_carro ON Requisicao.Id_requisicao = Requisicao_carro.Id_requisicao INNER JOIN Carro ON Requisicao_carro.Id_carro = Carro.Id_carro WHERE Carro.id_carro=@x1 AND ">
             <SelectParameters>
-                <asp:Parameter Name="id" />
+                <asp:Parameter Name="x1" />
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
@@ -23,6 +23,14 @@
                 <asp:Parameter Name="id" />
             </SelectParameters>
         </asp:SqlDataSource>
+        <asp:CreateUserWizard ID="CreateUserWizard1" runat="server">
+            <WizardSteps>
+                <asp:CreateUserWizardStep runat="server" />
+                <asp:CompleteWizardStep runat="server" />
+            </WizardSteps>
+        </asp:CreateUserWizard>
+        <br />
+        <br />
     </form>
 </body>
 </html>

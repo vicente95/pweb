@@ -2,12 +2,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <br />
-    Aqui poderá ver os dados da sua conta.<asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" Width="770px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+    Aqui poderá ver os dados da sua conta. Para editar click em selecionar.<br />
+    <br />
+    <br />
+    <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" Width="770px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
-        <asp:CommandField ShowSelectButton="true" />
+        <asp:CommandField ShowSelectButton="true" SelectText="Editar "/>
+        <asp:CommandField ShowEditButton="true" />
         </Columns>
         <FooterStyle BackColor="#CCCC99" />
         <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />

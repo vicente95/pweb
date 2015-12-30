@@ -24,7 +24,7 @@ public class carros_tudo
 
         using (SqlConnection con = new SqlConnection(constring))
         {
-            using (SqlCommand cmd = new SqlCommand("SELECT [modelo], [marca], [matricula] FROM [Carro] WHERE [id_utilizador] = @status", con))
+            using (SqlCommand cmd = new SqlCommand("SELECT [modelo], [marca], [matricula], [estado] FROM [Carro] WHERE [id_utilizador] = @status", con))
             {
 
                 cmd.Parameters.AddWithValue("@status", n_cont);

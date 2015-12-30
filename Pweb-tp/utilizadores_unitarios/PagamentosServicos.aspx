@@ -4,14 +4,13 @@
     <hr />
     <asp:Label ID="Label1" runat="server" Text="Label">Ver por matricula:</asp:Label>
     <asp:TextBox ID="TextBox1" runat="server" Width="179px"></asp:TextBox>
-&nbsp;<asp:Button ID="Button1" runat="server" Text="pesquizar" Width="81px" />
+&nbsp;<asp:Button ID="Button1" runat="server" Text="pesquizar" Width="81px" OnClick="Button1_Click" />
     <br />
+    <br />
+    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
     <br />
     <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" >
             <AlternatingRowStyle BackColor="White" />
-            <Columns>
-                 <asp:CommandField ShowSelectButton="true" />
-            </Columns>
             <FooterStyle BackColor="#CCCC99" />
             <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />

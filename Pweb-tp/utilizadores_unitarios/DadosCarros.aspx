@@ -1,14 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/utilizadores_unitarios/Cliente_unitario.master" AutoEventWireup="true" CodeFile="DadosCarros.aspx.cs" Inherits="utilizadores_unitarios_DadosCarros" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/utilizadores_unitarios/Cliente_unitario.master" AutoEventWireup="true" CodeFile="DadosCarros.aspx.cs" Inherits="utilizadores_unitarios_Default123" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="form-horizontal">
     <hr />
+        Aqui poderá ver, editar e eleminar os seus carros.
         <asp:CheckBox ID="CheckBox1" runat="server" Text="Eleminar" AutoPostBack="True" />
     <div class="form-group">
         <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                 <asp:CommandField ShowSelectButton="true" />
+                 <asp:CommandField ShowSelectButton="true" SelectText=" Editar " />
             </Columns>
             <FooterStyle BackColor="#CCCC99" />
             <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
@@ -20,10 +21,10 @@
             <SortedDescendingCellStyle BackColor="#EAEAD3" />
             <SortedDescendingHeaderStyle BackColor="#575357" />
         </asp:GridView>
-        <asp:GridView ID="GridView2" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Visible="False">
+        <asp:GridView ID="GridView2" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" Visible="False" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                 <asp:CommandField ShowDeleteButton="true" />
+                 <asp:CommandField ShowSelectButton="true" SelectText=" Eleminar"  />
             </Columns>
             <FooterStyle BackColor="#CCCC99" />
             <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
@@ -121,8 +122,10 @@
                 </asp:RadioButtonList>
         <div class="form-group">
             <div class="col-md-5">
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RadioButtonList2" CssClass="text-danger" ErrorMessage="Selecione" />
-            <asp:Button ID="Button2" runat="server" Text="Modificar Carro" CssClass="btn btn-default" OnClick="Button2_Click" />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RadioButtonList2" CssClass="text-danger" ErrorMessage="Selecione o estado do carro" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="Button3" runat="server" Text="voltar" CssClass="btn btn-default" OnClick="Button3_Click"/>
+                <asp:Button ID="Button2" runat="server" CssClass="btn btn-default" OnClick="Button2_Click" Text="Modificar Carro" />
             </div>
          </div>
             </div>

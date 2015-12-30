@@ -155,7 +155,35 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
 
     protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
     {
+        int id_p;
+        string parque = GridView1.SelectedRow.Cells[3].Text;
+        string matricula = GridView1.SelectedRow.Cells[1].Text;
+        string data = GridView1.SelectedRow.Cells[4].Text;
+        int executar;
 
+        if (parque== "Avenida Fernão Magalhães")
+        {
+            id_p = 1;
+
+        } else if (parque== "Quinta das Flores")
+        {
+            id_p = 2;
+        }
+        else
+        {
+            id_p = 3;
+        }
+
+        executar=apagar_parqueamento.ap_parqueamento(id_p, matricula, data);
+        if (executar == 0)
+        {
+            Label3.Text = "Não foi possivel eleminar a requesição por não estar paga ou ainda não ter sido reconhecida como paga!";
+
+        }
+        else
+        {
+            Label3.Text = "Apagado com sucesso!";
+        }
     }
 
     protected void Modificar_Click(object sender, EventArgs e)
@@ -251,5 +279,9 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
         cc.Close();
         Response.Redirect("~/utilizadores_unitarios/GerirParqueamento.aspx");
         Label3.Text = "Alterado com sucesso";
+    }
+    protected void voltar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/utilizadores_unitarios/GerirParqueamento.aspx");
     }
 }
