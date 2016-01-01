@@ -53,9 +53,10 @@
             <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Bold="true" Font-Underline="true" Font-Size="15">Carro ativos: </asp:Label>
             <div class="col-md-5">
                 <asp:DropDownList ID="Selecionecarro" runat="server">
-                    <asp:ListItem Text="Selecione" Selected="True" Value ="1"></asp:ListItem>
+                    <asp:ListItem Text="Selecione" Value ="1" Selected="True"></asp:ListItem>
                 </asp:DropDownList>
-            &nbsp;</div>
+            &nbsp;<asp:CompareValidator ID="cmp5" runat="server" ErrorMessage="Selecione um carro" Operator="NotEqual" ValueToCompare="1" ControlToValidate="Selecionecarro" CssClass="text-danger"></asp:CompareValidator>
+            </div>
         </div>
         <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Bold="true" Font-Underline="true" Font-Size="15">Selecione o parque: </asp:Label>
@@ -70,8 +71,9 @@
         <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Bold="true" Font-Underline="true" Font-Size="15">Data Inicio: </asp:Label>
             <div class="col-md-5">       
-                <asp:TextBox ID="Datainicio" runat="server" TextMode="Date"></asp:TextBox>
+                <asp:TextBox ID="Datainicio" runat="server" TextMode="Date" AutoPostBack="True"></asp:TextBox>
                 <asp:CompareValidator runat="server" ID="cmp1" ErrorMessage="A data deve ser a partir de hoje" ControlToValidate="Datainicio" Type="String" Operator="GreaterThanEqual" ForeColor="Red" />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Datainicio" CssClass="text-danger" ErrorMessage="Insira uma data de inicio" />
              </div>
         </div>
 
@@ -80,6 +82,10 @@
             <div class="col-md-6">       
                 <asp:TextBox ID="Datafim" runat="server" TextMode="Date"></asp:TextBox>
                 <asp:CompareValidator runat="server" ID="cmp2" ErrorMessage="A data deve ser a partir de hoje - pelo menos um dia" ControlToValidate="Datafim" Type="String" Operator="GreaterThan" ForeColor="Red" />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Datafim" CssClass="text-danger" ErrorMessage="Insira uma data de fim" />
+                <br />
+                <br />
+                <asp:CompareValidator ID="cmp6" runat="server" ErrorMessage="A data final não é maior que a inicial" ControlToValidate="Datafim" Operator="GreaterThan" ForeColor="Red"></asp:CompareValidator>
              </div>
         </div>
 

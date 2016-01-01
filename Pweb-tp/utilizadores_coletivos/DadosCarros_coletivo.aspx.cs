@@ -61,7 +61,7 @@ public partial class utilizadores_unitarios_DadosCarros : System.Web.UI.Page
 
 
 
-            if (RadioButtonList3.SelectedItem.Text == "Activo" && quantosativos < 2)
+            if (RadioButtonList3.SelectedItem.Text == "Activo" && quantosativos < 8)
             {
                 cmd.Parameters.AddWithValue("@est", 1);
             }

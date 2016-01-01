@@ -53,7 +53,8 @@
                 <asp:DropDownList ID="Selecionecarro" runat="server">
                     <asp:ListItem Selected="True" Text="Selecione" Value="1"></asp:ListItem>
                 </asp:DropDownList>
-                &nbsp;</div>
+                &nbsp;<asp:CompareValidator ID="cmp5" runat="server" ControlToValidate="Selecionecarro" CssClass="text-danger" ErrorMessage="Selecione um carro" Operator="NotEqual" ValueToCompare="1"></asp:CompareValidator>
+            </div>
         </div>
         <div class="form-group">
             <asp:Label runat="server" Font-Bold="true" Font-Underline="true" Font-Size="15">Selecione o parque: </asp:Label>
@@ -72,6 +73,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="Datainicio" runat="server" TextMode="Date"></asp:TextBox>
                 <asp:CompareValidator runat="server" ID="cmp1" ErrorMessage="A data deve ser a partir de hoje" ControlToValidate="Datainicio" Type="String" Operator="GreaterThanEqual" ForeColor="Red" />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Datainicio" CssClass="text-danger" ErrorMessage="Insira uma data de inicio" />
              </div>
         </div>
 
@@ -82,6 +84,10 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="Datafim" runat="server" TextMode="Date"></asp:TextBox>
                 <asp:CompareValidator runat="server" ID="cmp2" ErrorMessage="A data deve ser a partir de hoje - pelo menos um dia" ControlToValidate="Datafim" Type="String" Operator="GreaterThan" ForeColor="Red" />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Datafim" CssClass="text-danger" ErrorMessage="Insira uma data de fim" />
+                <br />
+                <br />
+                <asp:CompareValidator ID="cmp6" runat="server" ControlToValidate="Datafim" ErrorMessage="A data final não é maior que a inicial" ForeColor="Red" Operator="GreaterThan"></asp:CompareValidator>
              </div>
         </div>
 

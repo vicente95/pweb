@@ -34,19 +34,21 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
         {
             GridView2.Visible = true;
             GridView1.Visible = false;
-            
+            Label3.Text = "Poderá editar, eliminar e adicionar os seus parqueamentos alterne no botão eleminar.";
         }
         else
         {
             GridView1.Visible = true;
             GridView2.Visible = false;
-            
+            Label3.Text = "Poderá editar, eliminar e adicionar os seus parqueamentos alterne no botão eleminar.";
+
         }
 
 
         
         id=id_utilizador.id_utiliza(id);
         //mostrar os carros ativos do utilizador na dropdownlist
+       // Selecionecarro.Items.Clear();
         Carros_ativos.carros_at(id, Selecionecarro);
         //preencher griedview1 editar
         Parqueamento.Parque(GridView1);
@@ -54,10 +56,15 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
         Parqueamento.Parque(GridView2);
 
 
-        Datainicio.Text = DateTime.Now.ToString("yyyy-MM-dd");
+        //Datainicio.Text = DateTime.Now.ToString("yyyy-MM-dd");
+        //DateTime dt = Convert.ToDateTime(Datainicio.Text);
+        if (Datainicio.Text != "")
+        {
+            DateTime dt = Convert.ToDateTime(Datainicio.Text);
+            cmp6.ValueToCompare = dt.Date.ToString("yyyy-MM-dd");
+        }
         cmp1.ValueToCompare = DateTime.Now.ToString("yyyy-MM-dd");
         cmp2.ValueToCompare = DateTime.Now.ToString("yyyy-MM-dd");
-
     }
 
     protected void Criar_Click(object sender, EventArgs e)
@@ -144,71 +151,130 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
         ccc.Open();
         cmd9.ExecuteNonQuery();
         ccc.Close();
-        Response.Redirect("~/utilizadores_unitarios/GerirParqueamento.aspx");
+        Selecionecarro.Items.Clear();
+        //mostrar os carros ativos do utilizador na dropdownlist
+        Carros_ativos.carros_at(id, Selecionecarro);
+        //preencher griedview1 editar
+        Parqueamento.Parque(GridView1);
         Label3.Text = "Adicionada requesição com sucesso!";
+        Datafim.Text = "";     
 
     }
 
 
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Panel2.Visible = false;
-        Panel1.Visible = true;
-        Carros_ativos.carros_at(id, Selecionecarro0);
-        Selecionecarro0.SelectedValue = GridView1.SelectedRow.Cells[1].Text;
-        string ola = GridView1.SelectedRow.Cells[3].Text;
-        //Selecionaparque0.SelectedValue = GridView1.SelectedRow.Cells[3].Text;
-        Datainicio0.Text = GridView1.SelectedRow.Cells[4].Text;
-        Datafim0.Text = GridView1.SelectedRow.Cells[5].Text;
-      
+        DateTime dt = Convert.ToDateTime(GridView1.SelectedRow.Cells[4].Text);
+        DateTime ds = Convert.ToDateTime(GridView1.SelectedRow.Cells[5].Text);
+        string todaydate = DateTime.Now.ToString("yyyy-MM-dd");
+        if (dt.Date <= DateTime.Now.Date) //não pode editar por a data de inicio da requisição ser igual ou maior que hoje
+        {
+            MessageBox.Show("Já não pode editar esta requisição por já se encontrar no periudo de requesição!", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Panel1.Visible = false;
+            Panel2.Visible = true;
+            //preencher novamente griedview1 editar
+            Parqueamento.Parque(GridView1);
+            Selecionecarro.Items.Clear();
+            //mostrar os carros ativos do utilizador na dropdownlist
+            Carros_ativos.carros_at(id, Selecionecarro);
+        }
+        else if(ds.Date > DateTime.Now.Date)
+        {
+            MessageBox.Show("A requisição já passou!", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Panel1.Visible = false;
+            Panel2.Visible = true;
+            //preencher novamente griedview1 editar
+            Parqueamento.Parque(GridView1);
+            Selecionecarro.Items.Clear();
+            //mostrar os carros ativos do utilizador na dropdownlist
+            Carros_ativos.carros_at(id, Selecionecarro);
+
+        }
+        else
+        {
+            Panel2.Visible = false;
+            Panel1.Visible = true;
+            string sisisi = GridView1.SelectedRow.Cells[1].Text;
+            Carros_ativos.carros_at(id, Selecionecarro0);
+            Selecionecarro0.SelectedValue = GridView1.SelectedRow.Cells[1].Text;
+            string ola = GridView1.SelectedRow.Cells[3].Text;
+            //Selecionaparque0.SelectedValue = GridView1.SelectedRow.Cells[3].Text;
+            Datainicio0.Text = GridView1.SelectedRow.Cells[4].Text;
+            Datafim0.Text = GridView1.SelectedRow.Cells[5].Text;
+        }
 
     }
 
     protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
     {
-        DialogResult result = MessageBox.Show("Tem a certeza que pretende apagar esta requesição?", "Apagar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+        DialogResult result = MessageBox.Show("Tem a certeza que pretende apagar esta requesição?", "Apagar", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
         if (result == DialogResult.OK)
         {
-            int id_p;
-            string parque = GridView2.SelectedRow.Cells[3].Text;
-            string matricula = GridView2.SelectedRow.Cells[1].Text;
-            string data = GridView2.SelectedRow.Cells[4].Text;
-            int executar;
 
-            if (parque == "Avenida Fernao Magalhaes")
+            string todaydate = DateTime.Now.ToString("yyyy-MM-dd");
+            DateTime dt = Convert.ToDateTime(GridView2.SelectedRow.Cells[5].Text);
+            if (dt.Date <= DateTime.Now.Date)//pode eleminar se data do fim da requisição ser igual ou menor que hoje
             {
-                id_p = 1;
+                int id_p;
+                string parque = GridView2.SelectedRow.Cells[3].Text;
+                string matricula = GridView2.SelectedRow.Cells[1].Text;
+                string data = GridView2.SelectedRow.Cells[4].Text;
+                int executar;
 
-            }
-            else if (parque == "Quinta das Flores")
-            {
-                id_p = 2;
+                if (parque == "Avenida Fernao Magalhaes")
+                {
+                    id_p = 1;
+
+                }
+                else if (parque == "Quinta das Flores")
+                {
+                    id_p = 2;
+                }
+                else
+                {
+                    id_p = 3;
+                }
+
+                executar = apagar_parqueamento.ap_parqueamento(id_p, matricula, data);
+                if (executar == 0)
+                {
+                    Label3.ForeColor = System.Drawing.Color.Red;
+                    Label3.Text = "Não foi possivel eleminar a requesição por não estar paga ou ainda não ter sido reconhecida como paga!";
+                    Parqueamento.Parque(GridView2);
+                    Selecionecarro.Items.Clear();
+                    //mostrar os carros ativos do utilizador na dropdownlist
+                    Carros_ativos.carros_at(id, Selecionecarro);
+                }
+                else
+                {
+                    Label3.ForeColor = System.Drawing.Color.Green;
+                    Label3.Text = "Apagado com sucesso!";
+                    Parqueamento.Parque(GridView2);
+                    Selecionecarro.Items.Clear();
+                    //mostrar os carros ativos do utilizador na dropdownlist
+                    Carros_ativos.carros_at(id, Selecionecarro);
+                }
             }
             else
             {
-                id_p = 3;
-            }
+                    MessageBox.Show("Ainda não pode eleminar, por não ter passado a data de requisição", "Apagar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //voltar preencher griedview1 eleminar
+                    Parqueamento.Parque(GridView2);
+                Selecionecarro.Items.Clear();
+                //mostrar os carros ativos do utilizador na dropdownlist
+                Carros_ativos.carros_at(id, Selecionecarro);
 
-            executar = apagar_parqueamento.ap_parqueamento(id_p, matricula, data);
-            if (executar == 0)
-            {
-                Label3.ForeColor = System.Drawing.Color.Red;
-                Label3.Text = "Não foi possivel eleminar a requesição por não estar paga ou ainda não ter sido reconhecida como paga!";
-                Parqueamento.Parque(GridView2);
-            }
-            else
-            {
-                Label3.ForeColor = System.Drawing.Color.Green;
-                Label3.Text = "Apagado com sucesso!";
-                Parqueamento.Parque(GridView2);
             }
         }
         else
         {
-
+            
+            //voltar preencher griedview1 eleminar
             Parqueamento.Parque(GridView2);
-            //Response.Redirect("~/utilizadores_unitarios/GerirParqueamento.aspx");
+            Selecionecarro.Items.Clear();
+            //mostrar os carros ativos do utilizador na dropdownlist
+            Carros_ativos.carros_at(id, Selecionecarro);
         }
     }
 
@@ -307,6 +373,9 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
         Label3.Text = "Alterado com sucesso";
         
         Parqueamento.Parque(GridView1);
+        Selecionecarro.Items.Clear();
+        //mostrar os carros ativos do utilizador na dropdownlist
+        Carros_ativos.carros_at(id, Selecionecarro);
     }
     protected void voltar_Click(object sender, EventArgs e)
     {
@@ -314,5 +383,8 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
         Panel1.Visible = false;
        
         Parqueamento.Parque(GridView1);
+        Selecionecarro.Items.Clear();
+        //mostrar os carros ativos do utilizador na dropdownlist
+        Carros_ativos.carros_at(id, Selecionecarro);
     }
 }
