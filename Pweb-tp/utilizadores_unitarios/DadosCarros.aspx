@@ -69,17 +69,21 @@
         </div>
          <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Bold="true">Carro está? </asp:Label>
-            <div class="col-md-5">
-                <asp:RadioButtonList ID="RadioButtonList1" runat="server">
-                    <asp:ListItem Text="Ativo" Selected="True"></asp:ListItem>
-                    <asp:ListItem Text="Desativo"></asp:ListItem>
-                </asp:RadioButtonList>
-        <div class="form-group">
-            <div class="col-md-5">
-            <asp:Button ID="adcarro" runat="server" Text="Adicionar Carro" CssClass="btn btn-default" OnClick="adcarro_Click" />
-            </div>
-         </div>
-            </div>
+             <br />
+             <div class="col-md-5">
+                 <div class="form-group">
+                     <div class="col-md-5">
+                         <br />
+                         <asp:RadioButtonList ID="RadioButtonList3" runat="server">
+                             <asp:ListItem Value="1">Activo</asp:ListItem>
+                             <asp:ListItem Value="0">Desativo</asp:ListItem>
+                         </asp:RadioButtonList>
+                         <br />
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="RadioButtonList3" CssClass="text-danger" ErrorMessage="Selecione o estado do carro" />
+                         <asp:Button ID="adcarro" runat="server" CssClass="btn btn-default" OnClick="adcarro_Click" Text="Adicionar Carro" />
+                     </div>
+                 </div>
+             </div>
         </div>
     <hr />    
 
@@ -89,6 +93,8 @@
     <asp:Panel ID="Panel2" runat="server">
     <div class="form-group">
         <h4>Modificar Carro: </h4>
+        <p>
+            &nbsp;</p>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="marca" CssClass="col-md-2 control-label">Marca: </asp:Label>
             <div class="col-md-5">
@@ -116,13 +122,15 @@
          <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Bold="true">Carro está? </asp:Label>
             <div class="col-md-5">
-                <asp:RadioButtonList ID="RadioButtonList2" runat="server">
-                    <asp:ListItem Text="Ativo"></asp:ListItem>
-                    <asp:ListItem Text="Desativo"></asp:ListItem>
-                </asp:RadioButtonList>
         <div class="form-group">
             <div class="col-md-5">
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RadioButtonList2" CssClass="text-danger" ErrorMessage="Selecione o estado do carro" />
+                <br />
+                <asp:RadioButtonList ID="RadioButtonList4" runat="server">
+                    <asp:ListItem Value="1">Activo</asp:ListItem>
+                    <asp:ListItem Value="0">Desativo</asp:ListItem>
+                </asp:RadioButtonList>
+                <br />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RadioButtonList4" CssClass="text-danger" ErrorMessage="Selecione o estado do carro" />
                 &nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="Button3" runat="server" Text="voltar" CssClass="btn btn-default" OnClick="Button3_Click"/>
                 <asp:Button ID="Button2" runat="server" CssClass="btn btn-default" OnClick="Button2_Click" Text="Modificar Carro" />

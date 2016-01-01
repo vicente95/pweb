@@ -29,6 +29,35 @@
     <form id="form1" runat="server">
     <nav class="navbar navbar-custom  navbar-fixed-top">
         <div class="container-fluid">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                     <li>
+                        <a href="/Inicio.aspx">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="/Serviço.aspx">Serviços</a>
+                    </li>
+                    <li>
+                        <a href="/Parques.aspx">Os Parques</a>
+                    </li>
+                    <li>
+                        <a href="/Contactos.aspx">Contactos</a>
+                    </li>
+                    <li>
+                        <a href="/utilizadores_unitarios/inicio_unitario.aspx">Area cliente unitario</a>
+                    </li>
+                    <li>
+                        <a href="/utilizadores_coletivos/inicio_coletivo.aspx">Area cliente coletivo</a>
+                    </li>
+                    <li>
+                        <a href="/Administrador/GerirClientes.aspx">Area administrador</a>
+                    </li>
+                    <li>
+                        <a href="/conta/Login.aspx">Login</a>
+                    </li>
+                </ul>
+            </div>
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -50,29 +79,7 @@
                </a>
                 
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                     <li>
-                        <a href="Inicio.aspx">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="Serviço.aspx">Serviços</a>
-                    </li>
-                    <li>
-                        <a href="Parques.aspx">Os Parques</a>
-                    </li>
-                    <li>
-                        <a href="Contactos.aspx">Contactos</a>
-                    </li>
-                    <li>
-                        <a href="/conta/Login.aspx">Login</a>
-                    </li>
-                    <li>
-                        
-                    </li>
-                </ul>
-            </div>
+            
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->

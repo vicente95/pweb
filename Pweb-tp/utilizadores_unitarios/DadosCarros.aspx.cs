@@ -56,7 +56,7 @@ public partial class utilizadores_unitarios_Default123 : System.Web.UI.Page
 
 
 
-            if (RadioButtonList1.SelectedItem.Text == "Ativo" && quantosativos < 2)
+            if (RadioButtonList3.SelectedItem.Text == "Activo" && quantosativos < 2)
             {
                 cmd.Parameters.AddWithValue("@est", 1);
             }
@@ -70,7 +70,7 @@ public partial class utilizadores_unitarios_Default123 : System.Web.UI.Page
             cmd.ExecuteNonQuery();
             con.Close();
 
-            if (RadioButtonList1.SelectedItem.Text == "Ativo" && quantosativos == 2)
+            if (RadioButtonList3.SelectedItem.Text == "Activo" && quantosativos == 2)
             {
                 carros_tudo.carro(GridView2);
                 Label1.Text = "Feito com sucesso. ATENÇÃO: O CARRO FOI COLOCADO EM DESATIVO, POR JÁ TER 2 ATIVOS.";
@@ -101,15 +101,15 @@ public partial class utilizadores_unitarios_Default123 : System.Web.UI.Page
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-
-        String command = "UPDATE Carro SET [matricula]=@matr, [marca]=@marca, [modelo]=@mod, [estado]=est, WHERE [id_utilizador] = @s1 AND [matricula]=@s2";
+        quantosativos--;
+        String command = "UPDATE Carro SET [matricula]=@matr, [marca]=@marca, [modelo]=@mod, [estado]=@est WHERE [id_utilizador] = @s1 AND [matricula]=@s2";
         SqlConnection con = new SqlConnection(connectionString);
         SqlCommand cmd = new SqlCommand(command, con);
-        cmd.Parameters.AddWithValue("@matr", matricula.Text);
-        cmd.Parameters.AddWithValue("@marca", marca.Text);
-        cmd.Parameters.AddWithValue("@mod", modelo.Text);
+        cmd.Parameters.AddWithValue("@matr", TextBox3.Text);
+        cmd.Parameters.AddWithValue("@marca", TextBox1.Text);
+        cmd.Parameters.AddWithValue("@mod", TextBox2.Text);
 
-        if (RadioButtonList1.SelectedItem.Text == "Ativo" && quantosativos < 2)
+        if (RadioButtonList4.SelectedItem.Text == "Activo" && quantosativos < 2)
         {
             cmd.Parameters.AddWithValue("@est", 1);
         }
@@ -118,28 +118,29 @@ public partial class utilizadores_unitarios_Default123 : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@est", 0);
         }
         cmd.Parameters.AddWithValue("@s1", id);
-        cmd.Parameters.AddWithValue("@s2", GridView1.SelectedRow.Cells[2].Text);
+        cmd.Parameters.AddWithValue("@s2", GridView1.SelectedRow.Cells[3].Text);
 
         con.Open();
         cmd.ExecuteNonQuery();
         con.Close();
 
-        if (RadioButtonList1.SelectedItem.Text == "Ativo" && quantosativos == 2)
+        if (RadioButtonList4.SelectedItem.Text == "Ativo" && quantosativos == 2)
         {
-            carros_tudo.carro(GridView2);
+            carros_tudo.carro(GridView1);
             Label1.Text = "ATENÇÃO: O CARRO FOI COLOCADO NOVAMENTE EM DESATIVO, DESATIVE PRIMEIRO UM DOS ATIVOS.";
         }
         else
         {
-            carros_tudo.carro(GridView2);
+            carros_tudo.carro(GridView1);
             Label1.Text = "Feito com sucesso";
         }
+        Panel1.Visible = true;
 
     }
 
     protected void Button3_Click(object sender, EventArgs e)
     {
-        carros_tudo.carro(GridView2);
+        carros_tudo.carro(GridView1);
         Panel1.Visible = true;
         Panel2.Visible = false;
     }

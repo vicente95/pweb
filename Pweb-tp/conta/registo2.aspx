@@ -24,6 +24,7 @@
             </div >
                 Registo carro:(insira um carro obrigatorio ter pelo menos 1)-<br />
                 <div class="col-md-8">
+                    <br />
                     <asp:Label ID="Label1" runat="server" AssociatedControlID="marca" CssClass=" control-label">Marca: </asp:Label>
                     <div>
                         <asp:TextBox ID="marca" runat="server" CssClass="form-control" />
@@ -56,7 +57,7 @@
               
             </div>
             <div><br /><br />
-                <asp:DropDownList ID="DropDownList2" runat="server">
+                <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True">
                     <asp:ListItem Selected="True" Value="1">Cliente Unitario</asp:ListItem>
                     <asp:ListItem Value="2">Cliente coletivo</asp:ListItem>
                 </asp:DropDownList>
@@ -67,6 +68,18 @@
                 <div>
                Cliente Coletivo-&gt; Pessoa que representa um coletivo, nomeadamente uma empresa, e pretende que os parques sejam utilizados por um conjunto de veiculos.
 Poderá atribuir pessoas as respetivas matriculas. - 10 matriculas ativas no maximo. 
+                    <br />
+                    <div class="col-md-8">
+                        <br />
+                        <br />
+                        <asp:Label ID="Label5" runat="server" AssociatedControlID="matricula" CssClass=" control-label">Condutor: </asp:Label>
+                        <div>
+                            <asp:TextBox ID="condut" runat="server" CssClass="form-control" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="condut" CssClass="text-danger" ErrorMessage="Insira uma matrícula" />
+                            <asp:RegularExpressionValidator ID="N_nome" runat="server" ControlToValidate="condut" ErrorMessage="Tem de ter mais de 3 caracteres sem números" ValidationExpression="^[\s\S]{3,}$"></asp:RegularExpressionValidator>
+                        </div>
+                    </div>
+                    <br />
                 </div>
                 <br /><br /> <br />
                 <br />

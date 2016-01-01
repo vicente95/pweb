@@ -17,14 +17,25 @@ public partial class registo : System.Web.UI.Page
     string nomet;
     string connectionString = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
     string n_cont = " ";
+    string[] Por;
     //conexão a base de dados srtring
     protected void Page_Load(object sender, EventArgs e)
     {
+        condut.Visible = false;
+        Label5.Visible = false;
         //nomet.Text = PreviousPage.Mensagem;
         nomet = HttpContext.Current.User.Identity.Name.ToString();
+
+
+        if (DropDownList2.SelectedValue == "2")
+        {
+            condut.Visible = true;
+            Label5.Visible = true;
+        }
         
-           //ver se o utilizador já tem número de contribuinte
-            String command = "SELECT [N_contribuinte] FROM [Utilizador] WHERE [Nome] = @st";
+
+        //ver se o utilizador já tem número de contribuinte
+        String command = "SELECT [N_contribuinte] FROM [Utilizador] WHERE [Nome] = @st";
             SqlConnection conn = new SqlConnection(connectionString);
             SqlCommand Cm = new SqlCommand(command, conn);
             Cm.Parameters.AddWithValue("@st", nomet);
@@ -39,19 +50,36 @@ public partial class registo : System.Web.UI.Page
             }
             conn.Close();
 
-            if (n_cont != " ")
+            
+           if (n_cont != " ")
             {
-                Response.Redirect("~/inicio.aspx");
+            string[] a = Roles.GetRolesForUser();
+
+
+
+            if (a[0] == "unitario")
+            {
+                Response.Redirect("~/utilizadores_unitarios/inicio_unitario.aspx");
             }
+            else if (a[0] == "coletivo")
+            {
+                Response.Redirect("~/utilizadores_coletivos/inicio_coletivo.aspx");
+            }
+            else if (a[0] == "administrador")
+            {
+                Response.Redirect("~/Administrador/GerirClientes.aspx");
+            }
+
+        }
             
     }
 
     protected void button_Click(object sender, EventArgs e)
     {
-        
-        
+        string[] Por = { nomet };
 
-        if(DropDownList2.SelectedValue == "1")
+
+        if (DropDownList2.SelectedValue == "1")
         {
             
 
@@ -105,8 +133,8 @@ public partial class registo : System.Web.UI.Page
             Roles.AddUsersToRole(Grumetes, "unitario");
 
             Registar_primeiro_carro.Registar_primeiro(matricula, marca, modelo, RadioButtonList1);
-            
 
+            Roles.AddUsersToRole(Por, "unitario");
         }
         else
         {
@@ -164,7 +192,25 @@ public partial class registo : System.Web.UI.Page
 
             Response.Redirect("~/inicio.aspx");
 
-            Registar_primeiro_carro.Registar_primeiro(matricula, marca, modelo, RadioButtonList1);
+            Registar_primeiro_carro.Registar_coletivo(matricula, marca, modelo, RadioButtonList1, condut);
+            Roles.AddUsersToRole(Por, "coletivo");
+        }
+
+        string[] a = Roles.GetRolesForUser();
+
+
+
+        if (a[0] == "unitario")
+        {
+            Response.Redirect("~/utilizadores_unitarios/inicio_unitario.aspx");
+        }
+        else if (a[0] == "coletivo")
+        {
+            Response.Redirect("~/utilizadores_coletivos/inicio_coletivo.aspx");
+        }
+        else if (a[0] =="administrador")
+        {
+            Response.Redirect("~/Administrador/GerirClientes.aspx");
         }
     }
 }

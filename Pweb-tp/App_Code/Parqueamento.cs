@@ -18,7 +18,8 @@ public class Parqueamento
         //
         // TODO: Add constructor logic here
         //
-        ddl.SelectedIndex = -1;
+        ddl.DataSource = null;
+        ddl.DataBind();
         int d=0;
         d=id_utilizador.id_utiliza(d);
         string constring = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;

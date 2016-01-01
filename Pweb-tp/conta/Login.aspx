@@ -8,7 +8,7 @@
                 <div class="form-horizontal">
     &nbsp;<asp:LoginView ID="LoginView1" runat="server">
         <AnonymousTemplate>
-            <asp:Login ID="Login1" runat="server" VisibleWhenLoggedIn="False" DestinationPageUrl="~/utilizadores_unitarios/inicio_unitario.aspx" CreateUserUrl="~/conta/Registo1.aspx" CreateUserText="Não tem conta? Faça o registo aqui" ></asp:Login>
+            <asp:Login ID="Login1" runat="server" VisibleWhenLoggedIn="False" DestinationPageUrl="~/conta/registo2.aspx" CreateUserUrl="~/conta/Registo1.aspx" CreateUserText="Não tem conta? Faça o registo aqui" ></asp:Login>
         </AnonymousTemplate>
     </asp:LoginView>
             </div>

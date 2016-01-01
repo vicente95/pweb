@@ -51,7 +51,7 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
         //preencher griedview1 editar
         Parqueamento.Parque(GridView1);
         //preencher griedview2 eleminar
-        
+        Parqueamento.Parque(GridView2);
 
 
         Datainicio.Text = DateTime.Now.ToString("yyyy-MM-dd");

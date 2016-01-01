@@ -14,18 +14,18 @@ public partial class conta_Registo : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       /* string[] Piratas = { "vitor" };
+        /*string[] Piratas = { "vitor" };
         string[] Grumetes = { "andre" };
 
         CriarCategorias(sender, e);
 
-        Roles.AddUsersToRole(Piratas, "unitario");
-        Roles.AddUsersToRole(Grumetes, "coletivo");
+        Roles.AddUsersToRole(Por, "unitario");
+        Roles.AddUsersToRole(Por, "coletivo");
     }
     
     protected void CriarCategorias(object sender, EventArgs e)
     {
-        string[] Categorias = { "unitario", "coletivo" };
+        string[] Categorias = { "unitario", "coletivo", "administrador" };
       
         foreach (string cat in Categorias)
             if (!Roles.RoleExists(cat))
@@ -38,12 +38,16 @@ public partial class conta_Registo : System.Web.UI.Page
 
     protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e)
     {
+        
         string connectionString = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
         TextBox nome = (TextBox)CreateUserWizard1.CreateUserStep.ContentTemplateContainer.FindControl("UserName");
         TextBox email = (TextBox)CreateUserWizard1.CreateUserStep.ContentTemplateContainer.FindControl("Email");
         int existe;
+        
 
         existe = ver_se_existe.ver_email(email);
+
+        //Por o utilizador numa role
 
         if (existe == 1)
         {
