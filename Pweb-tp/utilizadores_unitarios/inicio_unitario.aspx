@@ -26,25 +26,18 @@
 
     <br />
     <asp:Label ID="Label1" runat="server" Text="Label">Só pode alterar os seus dados</asp:Label>
+    &nbsp;<asp:Label ID="Label2" runat="server" Text=""></asp:Label>
     <br />
     <asp:Panel ID="Panel1" runat="server">
             <hr />
         <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-2 control-label" Text="Nome: " Font-Bold="true" Font-Underline="true" Font-Size="17"></asp:Label>
             
-                <asp:TextBox ID="Textnome" runat="server" Width="438px"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Textnome" CssClass="text-danger" ErrorMessage="O nome é necessario." />
-                &nbsp;<asp:RegularExpressionValidator ID="N_nome" runat="server" ControlToValidate="Textnome" ErrorMessage="Tem de ter mais de 3 caracteres sem números" ValidationExpression="^[\s\S]{3,}$"></asp:RegularExpressionValidator>
-                <br />
-           
-        
-               <br />
-            <br />
-            <asp:Label runat="server" CssClass="col-md-2 control-label" Text="Email: " Font-Bold="true" Font-Underline="true" Font-Size="17"></asp:Label>
-            
-                <asp:TextBox ID="Textemail" runat="server" Width="336px"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Textemail" CssClass="text-danger" ErrorMessage="O email é necessario." />
-                &nbsp;<asp:RegularExpressionValidator ID="N_mail" runat="server" ControlToValidate="Textemail" ErrorMessage="Email invalido" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                <asp:TextBox ID="Textnome" runat="server" Width="380px" Enabled="False"></asp:TextBox>
+                &nbsp; O nome não pode ser alterado<br />&nbsp;<br /><br /><asp:Label runat="server" CssClass="col-md-2 control-label" Font-Bold="true" Font-Size="17" Font-Underline="true" Text="Email: "></asp:Label>
+            <asp:TextBox ID="Textemail" runat="server" Width="336px"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Textemail" CssClass="text-danger" ErrorMessage="O email é necessario." />
+            &nbsp;<asp:RegularExpressionValidator ID="N_mail" runat="server" ControlToValidate="Textemail" ErrorMessage="Email invalido" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                 <br />
             
      
@@ -73,13 +66,13 @@
                 
            
        
-            <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Underline="true" Font-Size="13">
-                <asp:HyperLink ID="HyperLink1" runat="server" Text="Alterar Palabvra-passe? Carregue aqui!"></asp:HyperLink></asp:Label>
+            <asp:Label runat="server" CssClass="col-md-2 control-label" Font-Underline="true" Font-Size="13"></asp:Label>
                     <asp:Button ID="voltar" runat="server" OnClick="voltar_Click" Text="voltar" Width="109px" />
                     <asp:Button ID="Button1" runat="server" Text="Modificar" Width="109px" OnClick="Button1_Click" />
                 </div>
         <hr />
         </asp:Panel>
 
+    <asp:ChangePassword ID="ChangePassword1" runat="server" ContinueDestinationPageUrl="~/utilizadores_unitarios/inicio_unitario.aspx"></asp:ChangePassword>
 </asp:Content>
 

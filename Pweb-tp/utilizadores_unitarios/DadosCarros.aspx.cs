@@ -72,18 +72,18 @@ public partial class utilizadores_unitarios_Default123 : System.Web.UI.Page
 
             if (RadioButtonList3.SelectedItem.Text == "Activo" && quantosativos == 2)
             {
-                carros_tudo.carro(GridView2);
+                carros_tudo.carro(GridView1);
                 Label1.Text = "Feito com sucesso. ATENÇÃO: O CARRO FOI COLOCADO EM DESATIVO, POR JÁ TER 2 ATIVOS.";
             }
             else
             {
-                carros_tudo.carro(GridView2);
+                carros_tudo.carro(GridView1);
                 Label1.Text = "Feito com sucesso";
             }
         }
         else
         {
-            carros_tudo.carro(GridView2);
+            carros_tudo.carro(GridView1);
             Label1.Text = "Já tem 3 carros! Não pode adicionar mais";
         }
 

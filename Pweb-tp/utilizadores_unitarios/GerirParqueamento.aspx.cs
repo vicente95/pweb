@@ -178,7 +178,7 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
             //mostrar os carros ativos do utilizador na dropdownlist
             Carros_ativos.carros_at(id, Selecionecarro);
         }
-        else if(ds.Date > DateTime.Now.Date)
+        else if(ds.Date < DateTime.Now.Date && dt.Date < DateTime.Now.Date)
         {
             MessageBox.Show("A requisição já passou!", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             Panel1.Visible = false;

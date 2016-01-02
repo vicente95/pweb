@@ -14,7 +14,7 @@ public class apagar_relacao_requesicao
     {
         //
         // TODO: Add constructor logic here
-        //
+        //seleciona as requesições de um carro elemina as relações. uma a uma
         string n;
         string constring = ConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
         SqlConnection con = new SqlConnection(constring);

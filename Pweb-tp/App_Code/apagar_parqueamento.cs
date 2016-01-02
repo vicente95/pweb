@@ -125,9 +125,9 @@ public class apagar_parqueamento
         int n = 0;
         string constring = ConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
         SqlConnection con = new SqlConnection(constring);
-        SqlCommand cmd = new SqlCommand("SELECT Requisicao.Estado_pagamento FROM Requisicao WHERE Id_requisicao=@x1", con);
+        SqlCommand cmd = new SqlCommand("SELECT Requisicao.Estado_pagamento FROM Requisicao WHERE Id_requisicao=@x1 AND Estado_pagamento=@x2", con);
         cmd.Parameters.AddWithValue("@x1", idreq);
-        //cmd.Parameters.AddWithValue("@x2", "Por pagar");
+        cmd.Parameters.AddWithValue("@x2", "Por pagar");
         con.Open();
         try
         {

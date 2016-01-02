@@ -81,6 +81,31 @@ public class contar_activos
         conn.Close();
         return num;
     }
+
+    public static int procura_dono_carro(int mat)
+    {
+        //ver dono do carro admin
+        // TODO: Add constructor logic here
+        //
+        int num;
+        string connectionString = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
+
+        String StrSel = "SELECT [Id_utilizador] FROM [Carro] WHERE Id_carro= @mt";
+        SqlConnection conn = new SqlConnection(connectionString);
+        SqlCommand Cm = new SqlCommand(StrSel, conn);
+        Cm.Parameters.AddWithValue("@mt", mat);
+        conn.Open();
+        try
+        {
+            num = (Int32)Cm.ExecuteScalar();
+        }
+        catch
+        {
+            num = 0;
+        }
+        conn.Close();
+        return num;
+    }
     public static int quantas_requesicoes_tem_carro(int id)
     {
         //utilizado para apagar carro

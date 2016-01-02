@@ -43,6 +43,7 @@
                     <div>
                         <asp:TextBox ID="matricula" runat="server" CssClass="form-control" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="marca" CssClass="text-danger" ErrorMessage="Insira uma matrícula" />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="matricula" ErrorMessage="Matricula invalida" ValidationExpression="^\d{2}-\w{2}-\d{2}$"></asp:RegularExpressionValidator>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -58,7 +59,7 @@
             </div>
             <div><br /><br />
                 <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True">
-                    <asp:ListItem Selected="True" Value="1">Cliente Unitario</asp:ListItem>
+                    <asp:ListItem Value="1">Cliente Unitario</asp:ListItem>
                     <asp:ListItem Value="2">Cliente coletivo</asp:ListItem>
                 </asp:DropDownList>
                 <div>

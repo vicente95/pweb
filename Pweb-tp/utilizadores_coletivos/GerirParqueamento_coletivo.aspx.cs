@@ -61,7 +61,7 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
         }
 
 
-        Datainicio.Text = DateTime.Now.ToString("yyyy-MM-dd");
+        //Datainicio.Text = DateTime.Now.ToString("yyyy-MM-dd");
         cmp1.ValueToCompare = DateTime.Now.ToString("yyyy-MM-dd");
         cmp2.ValueToCompare = DateTime.Now.ToString("yyyy-MM-dd");
 
@@ -175,7 +175,7 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
             GridView2.Visible = false;
             Label3.Text = "Pode editar e eleminar a sua informação.";
         }
-        else if (ds.Date > DateTime.Now.Date)
+        else if (ds.Date < DateTime.Now.Date && dt.Date < DateTime.Now.Date)
         {
             MessageBox.Show("A requisição já passou!", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             Panel2.Visible = false;
@@ -277,7 +277,7 @@ public partial class utilizadores_unitarios_GerirParqueamento : System.Web.UI.Pa
 
         }
        
-        }
+  }
 
     protected void Modificar_Click(object sender, EventArgs e)
     {

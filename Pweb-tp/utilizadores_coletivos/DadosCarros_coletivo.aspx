@@ -77,6 +77,7 @@
                 <asp:TextBox runat="server" ID="matricula" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="matricula"
                     CssClass="text-danger" ErrorMessage="Insira uma matrícula" />
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="matricula" ErrorMessage="Matricula invalida" ValidationExpression="^\d{2}-\w{2}-\d{2}$"></asp:RegularExpressionValidator>
             </div>
         </div>
         <div class="form-group">

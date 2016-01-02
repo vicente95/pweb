@@ -50,7 +50,7 @@ public class Registar_primeiro_carro
         id = id_utilizador.id_utiliza(id);
         string connectionString = WebConfigurationManager.ConnectionStrings["ConnectionString_usr"].ConnectionString;
 
-        String command = "INSERT INTO [Carro] ([matricula], [marca], [modelo], [estado], [condutor] [id_utilizador]) VALUES (@matr, @marca, @mod, @est, @cond, @id)";
+        String command = "INSERT INTO [Carro] ([matricula], [marca], [modelo], [estado], [condutor], [id_utilizador]) VALUES (@matr, @marca, @mod, @est, @cond, @id)";
         SqlConnection con = new SqlConnection(connectionString);
         SqlCommand cmd = new SqlCommand(command, con);
         cmd.Parameters.AddWithValue("@matr", matricula.Text);

@@ -22,7 +22,7 @@ public partial class utilizadores_unitarios_DadosCarros : System.Web.UI.Page
         carros_tudo_coletivo.carro(GridView2, procurar);
         if (GridView1.Rows.Count == 0 || GridView2.Rows.Count == 0)
         {
-            Label2.Text = "Não tem registos para pagamentos ainda ou não foi encontrada a sua procura!";
+            Label2.Text = "Não tem carros!";
         }
         Panel2.Visible = false;
         id = id_utilizador.id_utiliza(id);

@@ -21,6 +21,8 @@ public partial class registo : System.Web.UI.Page
     //conexão a base de dados srtring
     protected void Page_Load(object sender, EventArgs e)
     {
+        string[] a = Roles.GetRolesForUser();
+
         condut.Visible = false;
         Label5.Visible = false;
         //nomet.Text = PreviousPage.Mensagem;
@@ -50,12 +52,16 @@ public partial class registo : System.Web.UI.Page
             }
             conn.Close();
 
-            
-           if (n_cont != " ")
+        if (nomet == "administrator")
+        {
+            if (a[0] == "administrador")
             {
-            string[] a = Roles.GetRolesForUser();
+                Response.Redirect("~/Administrador/GerirClientes.aspx");
+            }
+        }
 
-
+        if (n_cont != " ")
+            {
 
             if (a[0] == "unitario")
             {
@@ -64,10 +70,6 @@ public partial class registo : System.Web.UI.Page
             else if (a[0] == "coletivo")
             {
                 Response.Redirect("~/utilizadores_coletivos/inicio_coletivo.aspx");
-            }
-            else if (a[0] == "administrador")
-            {
-                Response.Redirect("~/Administrador/GerirClientes.aspx");
             }
 
         }
@@ -134,7 +136,7 @@ public partial class registo : System.Web.UI.Page
 
             Registar_primeiro_carro.Registar_primeiro(matricula, marca, modelo, RadioButtonList1);
 
-            Roles.AddUsersToRole(Por, "unitario");
+            //Roles.AddUsersToRole(Por, "unitario");
         }
         else
         {
@@ -190,10 +192,15 @@ public partial class registo : System.Web.UI.Page
 
             Roles.AddUsersToRole(Grumetes, "coletivo");
 
-            Response.Redirect("~/inicio.aspx");
 
             Registar_primeiro_carro.Registar_coletivo(matricula, marca, modelo, RadioButtonList1, condut);
-            Roles.AddUsersToRole(Por, "coletivo");
+            try {
+                Roles.AddUsersToRole(Por, "coletivo");
+            }
+            catch
+            {
+
+            }
         }
 
         string[] a = Roles.GetRolesForUser();
